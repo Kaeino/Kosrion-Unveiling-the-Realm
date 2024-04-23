@@ -13,8 +13,7 @@ public class MainClass {
 
 
         ImageIcon splashImage = new ImageIcon("character-selection/src/images/game-background/background-1.gif"); 
-        // Replace "splash_image.png" with the path to your image
-
+        // just the source, damnn
         JLabel imageLabel = new JLabel(splashImage);
         splashPanel.add(imageLabel, BorderLayout.CENTER);
 
