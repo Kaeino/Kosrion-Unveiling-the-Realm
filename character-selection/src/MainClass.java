@@ -40,5 +40,7 @@ public class MainClass {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setLocationRelativeTo(null); 
         mainFrame.setVisible(true);
+
+        //MAIN MENU NYAN
     }
 }
