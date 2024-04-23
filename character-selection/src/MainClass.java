@@ -12,12 +12,14 @@ public class MainClass {
         JPanel splashPanel = new JPanel(new BorderLayout());
 
 
-        ImageIcon splashImage = new ImageIcon("character-selection/src/images/game-background/background-1.gif"); // Replace "splash_image.png" with the path to your image
+        ImageIcon splashImage = new ImageIcon("character-selection/src/images/game-background/background-1.gif"); 
+        // Replace "splash_image.png" with the path to your image
+
         JLabel imageLabel = new JLabel(splashImage);
         splashPanel.add(imageLabel, BorderLayout.CENTER);
 
-        JLabel textLabel = new JLabel("Enter a GODLY GAME, SHEESH", SwingConstants.CENTER);
-        textLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        JLabel textLabel = new JLabel("Entering a GODLY GAME, SHEESH", SwingConstants.CENTER);
+        textLabel.setFont(new Font("TIMES NEW ROMAN", Font.BOLD, 18));
         splashPanel.add(textLabel, BorderLayout.SOUTH);
 
 
@@ -26,7 +28,7 @@ public class MainClass {
         splashFrame.setVisible(true);
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
