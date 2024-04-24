@@ -11,7 +11,7 @@ import characterselection.SplashScreen;
 public class MainClass {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 
-        // these four lines setup for the music but don't play it, music play command is in line 47
+        // these four lines setup for the music but don't play it, music play command is in line 47 - 49
         File file = new File("character-selection/src/res/Music/BGM.wav");
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
@@ -44,7 +44,8 @@ public class MainClass {
         // 2nd - then after splashscreen papakita nmn main menu
         MainMenu.show(mainFrame, "character-selection/src/res/game-background/background-2.gif");
 
-        // Hi, I'm music play command
+        // Hi, I'm music play command, first commands makes the music loop, 2nd command makes the music play
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
         clip.start();
     }
 }
