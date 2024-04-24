@@ -27,11 +27,13 @@ public class MainClass {
 
         //damnnn sinecenter nya rin sa Screen mo uli
         mainFrame.setLocationRelativeTo(null);
-        
+
         //damnn para visible yung frame sheesh
         mainFrame.setVisible(true);
 
         // 2nd - then after splashscreen papakita nmn main menu
-        MainMenu.show(mainFrame, "character-selection/src/game-background/background-2.gif");
+        MainMenu.show(mainFrame, "character-selection/src/res/game-background/background-2.gif");
+
+        
     }
 }

@@ -1,7 +1,8 @@
 package characterselection;
-
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 
 public class MainMenu {
 
@@ -35,8 +36,10 @@ public class MainMenu {
 
         //damn revalidate means inaupdate nya lang  yung layout ng frame
         mainFrame.revalidate();
-        
+
         //eto nmn nirerefresh nya lang yung main frame para gudshit na sya
         mainFrame.repaint();
+
     }
+    
 }

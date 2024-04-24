@@ -1,5 +1,4 @@
 package characterselection;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,7 +19,7 @@ public class SplashScreen {
         JPanel splashPanel = new JPanel(new BorderLayout());
 
         // damn karami comments, tho this one niloload nya lang image ng splashscreen, with path
-        ImageIcon splashImage = new ImageIcon("character-selection/src/game-background/background-1.gif");
+        ImageIcon splashImage = new ImageIcon("character-selection/src/res/game-background/background-1.gif");
 
         // label ng image damn
         JLabel imageLabel = new JLabel(splashImage);
@@ -34,7 +33,7 @@ public class SplashScreen {
 
         //damnn yung pang design ng splashscreen text nmn toh
         textLabel.setFont(new Font("TIMES NEW ROMAN", Font.BOLD, 18));
-        
+
         //kaya nasa baba yung Splashscreen text natin is dahil dito
         splashPanel.add(textLabel, BorderLayout.SOUTH);
 
