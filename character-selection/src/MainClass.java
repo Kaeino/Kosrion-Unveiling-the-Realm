@@ -1,45 +1,32 @@
 import javax.swing.*;
 import java.awt.*;
 
+//damnn eto packages, para magamit yung character-selection-package
+import characterselection.*;
+import characterselection.SplashScreen;
+
 public class MainClass {
     public static void main(String[] args) {
+        // 1st - this show the splash screen muna
+        SplashScreen.show();
 
-        JFrame splashFrame = new JFrame();
-        splashFrame.setUndecorated(true); 
-        splashFrame.setSize(400, 300);
-        splashFrame.setLocationRelativeTo(null); 
-
-        JPanel splashPanel = new JPanel(new BorderLayout());
-
-
-        ImageIcon splashImage = new ImageIcon("character-selection/src/images/game-background/background-1.gif"); 
-        // just the source, damnn
-        JLabel imageLabel = new JLabel(splashImage);
-        splashPanel.add(imageLabel, BorderLayout.CENTER);
-
-        JLabel textLabel = new JLabel("Entering a GODLY GAME, SHEESH", SwingConstants.CENTER);
-        textLabel.setFont(new Font("TIMES NEW ROMAN", Font.BOLD, 18));
-        splashPanel.add(textLabel, BorderLayout.SOUTH);
-
-
-        splashFrame.add(splashPanel);
-        
-        splashFrame.setVisible(true);
-
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        splashFrame.dispose();
-
+        // Eto yung Main Frame, and it's values like sa CSS
         JFrame mainFrame = new JFrame("Main Application");
-        mainFrame.setSize(800, 600);
+        //damnnnn, closing shit
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setLocationRelativeTo(null); 
+        //damn para di na problemahin yung resize, false na damnn
+        mainFrame.setResizable(false);
+        //damnn size toh ng Main Framee damnn, so masasama yung main menu
+        mainFrame.setPreferredSize(new Dimension(950, 550));
+        
+        //dammnn taga adjust lang ng frame size, damn technique lang sya, no need to damnn
+        mainFrame.pack();
+        //damnnn sinecenter nya rin sa Screen mo uli
+        mainFrame.setLocationRelativeTo(null);
+        //damnn para visible yung frame sheesh
         mainFrame.setVisible(true);
 
-        //MAIN MENU NYAN
+        // 2nd - then after splashscreen papakita nmn main menu
+        MainMenu.show(mainFrame, "character-selection/src/game-background/background-2.gif");
     }
 }
