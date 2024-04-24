@@ -29,10 +29,13 @@ public class MainMenu {
 
         //clearing yung main frame contents, para malinis
         mainFrame.getContentPane().removeAll();
+
         //Inaadd nmn nito yung main menu panel sa main frame
         mainFrame.getContentPane().add(mainMenuPanel);
+
         //damn revalidate means inaupdate nya lang  yung layout ng frame
         mainFrame.revalidate();
+        
         //eto nmn nirerefresh nya lang yung main frame para gudshit na sya
         mainFrame.repaint();
     }
