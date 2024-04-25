@@ -30,7 +30,9 @@ public class MainMenu {
         mainMenuPanel.add(backgroundLabel, BorderLayout.CENTER);
 
         // Create a panel for buttons
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 3, 3));
+        buttonPanel.setOpaque(false);
+       
 
         // code for create a new character button lang
         ImageIcon createCharacterIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
@@ -65,13 +67,14 @@ public class MainMenu {
               System.exit(0);
             }
         });
-
+        
 
         // Add the quit button to the button panel
         buttonPanel.add(quitButton);
 
         // Add the button panel to the main menu panel
         mainMenuPanel.add(buttonPanel, BorderLayout.SOUTH);
+       
 
         // Eto mini shits
 
@@ -80,6 +83,7 @@ public class MainMenu {
 
         // Inaadd nmn nito yung main menu panel sa main frame
         mainFrame.getContentPane().add(mainMenuPanel);
+        
 
         // Damn revalidate means inaupdate nya lang yung layout ng frame
         mainFrame.revalidate();
