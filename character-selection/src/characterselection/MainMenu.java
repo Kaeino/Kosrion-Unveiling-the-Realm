@@ -47,7 +47,8 @@ public class MainMenu {
         // code for create a new character button lang
         ImageIcon createCharacterIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
         JButton createCharacterButton = new JButton(createCharacterIcon);
-        createCharacterButton.setPreferredSize(new Dimension(140, 50));
+        createCharacterButton.setFocusable(false);
+        createCharacterButton.setPreferredSize(new Dimension(130, 47));
         createCharacterButton.setContentAreaFilled(false); // Set button background to be transparent damn trash
         createCharacterButton.setBorderPainted(false); // Remove button border
         createCharacterButton.setOpaque(false); // Set button background to be transparent hayss
@@ -67,7 +68,8 @@ public class MainMenu {
         // whole code for exit button lang
         ImageIcon quitIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
         JButton quitButton = new JButton(quitIcon);
-        quitButton.setPreferredSize(new Dimension(150, 50));
+        quitButton.setFocusable(false);
+        quitButton.setPreferredSize(new Dimension(130, 47));
         quitButton.setContentAreaFilled(false); // 
         quitButton.setBorderPainted(false); // just removing the border, useless
         quitButton.setOpaque(false); // Set button background to be transparent daw tae
