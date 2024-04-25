@@ -11,6 +11,7 @@ public class MainSelection {
         mainSelectionPanel.setBackground(Color.WHITE); // Set background color
 
         
+        
         // Eto mini shits
         
         mainFrame.getContentPane().removeAll(); // Clearing yung main frame contents, para malinis
