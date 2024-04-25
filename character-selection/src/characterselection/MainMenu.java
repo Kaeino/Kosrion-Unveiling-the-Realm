@@ -45,7 +45,6 @@ public class MainMenu {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
         // code for create a new character button lang
-        // code for create a new character button lang
         ImageIcon createCharacterIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
         JButton createCharacterButton = new JButton(createCharacterIcon);
         createCharacterButton.setPreferredSize(new Dimension(140, 50));
@@ -79,7 +78,7 @@ public class MainMenu {
               System.exit(0);
             }
         });
-
+        
 
         // Add the quit button to the button panel
         buttonPanel.add(quitButton);
@@ -89,6 +88,7 @@ public class MainMenu {
         // Add the button panel to the main menu panel
 
         mainMenuPanel.add(buttonPanel, BorderLayout.SOUTH);
+       
 
         // Eto mini shits
 
