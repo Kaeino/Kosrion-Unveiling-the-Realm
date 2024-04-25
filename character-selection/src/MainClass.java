@@ -21,7 +21,7 @@ public class MainClass {
         SplashScreen.show();
 
         // Eto yung Main Frame, and it's values like sa CSS
-        JFrame mainFrame = new JFrame("Main Application");
+        JFrame mainFrame = new JFrame("Kosrion");
 
         //damnnnn, closing shit
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
