@@ -11,15 +11,13 @@ import java.awt.event.ActionListener;
 public class MainMenu {
 
     public static JPanel mainMenuPanel;
-    public static JPanel mainMenuBg;
-    public static JPanel buttonPanel;
     public static MainSelection select = new MainSelection();
 
     // Damnn eto yung method para mapakita yung main menu namay background image, which is yung lone hero, maintframe + imagepath = main menu with image damnn
     public static void show(JFrame mainFrame, String backgroundImagePath) {
 
         // Damnn, eto nmn hinohold nya lang main menu BG, parang object shit
-        mainMenuBg = new JPanel(new BorderLayout());
+        JPanel mainMenuBg = new JPanel(new BorderLayout());
     
         // Damnn, eto nmn hinohold nya lang main menu components, parang object shit
         mainMenuPanel = new JPanel(new BorderLayout());
@@ -49,7 +47,7 @@ public class MainMenu {
         mainMenuBg.add(backgroundLabel, BorderLayout.CENTER);
 
         // Create a panel for buttons
-        buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
         // code for create a new character button lang
         ImageIcon createCharacterIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
