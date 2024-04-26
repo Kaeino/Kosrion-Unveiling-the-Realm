@@ -7,7 +7,10 @@ public class MainSelectionVars {
     
 public JButton[] btnMainClass = new JButton[4];
 
-ImageIcon human = new ImageIcon("character-selection/src/res/sprites/human.gif");
+ImageIcon human = new ImageIcon("character-selection/src/res/sprites/Human.gif");
+ImageIcon elf = new ImageIcon("character-selection/src/res/sprites/Elf.gif");
+ImageIcon demon = new ImageIcon("character-selection/src/res/sprites/Demon.gif");
+ImageIcon dwarf = new ImageIcon("character-selection/src/res/sprites/Dwarf.gif");
 
 public Thread thread;
 
