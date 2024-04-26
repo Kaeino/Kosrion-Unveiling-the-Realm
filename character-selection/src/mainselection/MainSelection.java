@@ -14,7 +14,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
         this.setSize(950,500);
         this.setLocation(950,0);
-        this.setBackground(new Color(0,0,0));
+        this.setBackground(new Color(0,0,0,30));
 
     }
 
@@ -54,16 +54,18 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 		}
 
        private void SwitchPanels(){
-        vars.panelMoveInt -= 50;
+        vars.panelMoveSelect -= 50;
+        vars.panelMoveMainMenu -= 50;
        
-            if(vars.panelMoveInt >= 0){
-                
-                this.setLocation(vars.panelMoveInt,0);
+            if(vars.panelMoveSelect >= 0){
+         
+                characterselection.MainMenu.mainMenuPanel.setLocation(vars.panelMoveMainMenu,0);
+                this.setLocation(vars.panelMoveSelect,0);
 
             }
             else{
                 vars.Switch = false;
-                System.out.println(vars.panelMoveInt);
+                System.out.println(vars.panelMoveSelect);
             }
 
         }

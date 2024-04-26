@@ -6,6 +6,7 @@ public Thread thread;
 
 public boolean Switch = true;
 
-public int panelMoveInt = 950;
+public int panelMoveSelect = 950;
+public int panelMoveMainMenu = 0;
 
 }

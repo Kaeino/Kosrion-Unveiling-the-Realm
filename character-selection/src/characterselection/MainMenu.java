@@ -10,23 +10,30 @@ import java.awt.event.ActionListener;
 
 public class MainMenu {
 
+    public static JPanel mainMenuPanel;
+    public static JPanel mainMenuBg;
+    public static JPanel buttonPanel;
+    public static MainSelection select = new MainSelection();
+
     // Damnn eto yung method para mapakita yung main menu namay background image, which is yung lone hero, maintframe + imagepath = main menu with image damnn
     public static void show(JFrame mainFrame, String backgroundImagePath) {
 
         // Damnn, eto nmn hinohold nya lang main menu BG, parang object shit
-        JPanel mainMenuBg = new JPanel(new BorderLayout());
-
+        mainMenuBg = new JPanel(new BorderLayout());
+    
         // Damnn, eto nmn hinohold nya lang main menu components, parang object shit
-        JPanel mainMenuPanel = new JPanel(new BorderLayout());
+        mainMenuPanel = new JPanel(new BorderLayout());
 
         // Damnn, eto is para transparent ung mainMenuPanel
         mainMenuPanel.setBackground(new Color(0,0,0,0));
 
         // Damnn, eto is para macover nung mainMenuPanel ung buong screen
-        mainMenuPanel.setBounds(0,0,950,500);
+        mainMenuPanel.setLocation(0,0);
+        mainMenuPanel.setSize(950,500);
 
         // damnn adding it sa taas ng mainmenubg
         mainMenuBg.add(mainMenuPanel);
+        mainMenuBg.add(select);    
 
         // Damn eto nmn label pang display ng Background Image
         JLabel backgroundLabel = new JLabel();
@@ -42,7 +49,7 @@ public class MainMenu {
         mainMenuBg.add(backgroundLabel, BorderLayout.CENTER);
 
         // Create a panel for buttons
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
+        buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
         // code for create a new character button lang
         ImageIcon createCharacterIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
@@ -55,10 +62,7 @@ public class MainMenu {
         createCharacterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            // button is clicked? then will go open the MainSelection.java file (IMMA CONTINUE THIS NYAN) -P
-            
-            mainselection.MainSelection select = new MainSelection();
-             mainMenuPanel.add(select);             
+            // button is clicked? then will go open the MainSelection.java file (IMMA CONTINUE THIS NYAN) -P         
              select.RunStart();
              
             }
