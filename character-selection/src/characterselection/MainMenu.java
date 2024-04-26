@@ -126,7 +126,7 @@ public class MainMenu {
     }
 
     public static void MakeSound(){
-        File file = new File("character-selection/src/res/Sounds/Retro UI Sounds/Bonus/ui_pause.wav" );
+        File file = new File("character-selection/src/res/Sounds/Retro UI Sounds/Accept/ui_accept_6.wav" );
         try {
            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
            Clip clip = AudioSystem.getClip();
