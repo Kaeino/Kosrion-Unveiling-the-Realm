@@ -56,7 +56,11 @@ public class MainMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
             // button is clicked? then will go open the MainSelection.java file (IMMA CONTINUE THIS NYAN) -P
-             MainSelection.show(mainFrame);
+            
+            mainselection.MainSelection select = new MainSelection();
+             mainMenuPanel.add(select);             
+             select.RunStart();
+             
             }
         });
 
@@ -106,4 +110,9 @@ public class MainMenu {
         // Eto nmn nirerefresh nya lang yung main frame para gudshit na sya
         mainFrame.repaint();
     }
+
+    public void RunStart(){
+
+    }
+
 }

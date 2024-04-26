@@ -7,6 +7,7 @@ import java.io.IOException;
 //damnn eto packages, para magamit yung character-selection-package
 import characterselection.*;
 import characterselection.SplashScreen;
+import mainselection.MainSelection;
 
 public class MainClass {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
