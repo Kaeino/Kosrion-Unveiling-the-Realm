@@ -14,8 +14,18 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
         this.setSize(950,500);
         this.setLocation(950,0);
-        this.setBackground(new Color(0,0,0,30));
+        this.setBackground(new Color(0,0,0,50));
+        this.setLayout(null);
 
+        for(int i = 0; i<4; i++){
+            
+            vars.btnMainClass[i] = new JButton();
+            vars.btnMainClass[i].addActionListener(this);
+            vars.btnMainClass[i].setSize(120,170);
+            vars.btnMainClass[i].setLocation(vars.buttonMoveClasses,175);
+            this.add(vars.btnMainClass[i]);
+            vars.buttonMoveClasses += 200;
+        }
     }
 
     public void RunStart() {
@@ -40,7 +50,6 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             lastTime = currentTime;
             if (delta >= 1) {
                 if(vars.Switch == true){
-                    System.out.println("DAMN");
                     SwitchPanels();
                 }
 
@@ -54,8 +63,8 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 		}
 
        private void SwitchPanels(){
-        vars.panelMoveSelect -= 50;
-        vars.panelMoveMainMenu -= 50;
+        vars.panelMoveSelect -= 95;
+        vars.panelMoveMainMenu -= 95;
        
             if(vars.panelMoveSelect >= 0){
          
