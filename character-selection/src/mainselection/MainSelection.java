@@ -31,6 +31,8 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             vars.btnMainClass[i].addActionListener(this);
             vars.btnMainClass[i].setSize(120,170);
             vars.btnMainClass[i].setLocation(vars.buttonMoveClasses,175);
+            vars.btnMainClass[i].setOpaque(false);
+            vars.btnMainClass[i].setIcon(vars.human);
             this.add(vars.btnMainClass[i]);
             vars.buttonMoveClasses += 200;
         }
