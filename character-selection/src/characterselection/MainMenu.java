@@ -1,5 +1,10 @@
 package characterselection;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
 import mainselection.*;
@@ -7,6 +12,8 @@ import mainselection.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 public class MainMenu {
 
@@ -14,7 +21,8 @@ public class MainMenu {
     public static MainSelection select = new MainSelection();
 
     // Damnn eto yung method para mapakita yung main menu namay background image, which is yung lone hero, maintframe + imagepath = main menu with image damnn
-    public static void show(JFrame mainFrame, String backgroundImagePath) {
+    public static void show(JFrame mainFrame, String backgroundImagePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        
 
         // Damnn, eto nmn hinohold nya lang main menu BG, parang object shit
         JPanel mainMenuBg = new JPanel(new BorderLayout());
@@ -60,7 +68,8 @@ public class MainMenu {
         createCharacterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            // button is clicked? then will go open the MainSelection.java file (IMMA CONTINUE THIS NYAN) -P         
+            // button is clicked? then will go open the MainSelection.java file (IMMA CONTINUE THIS NYAN) -P   
+            MakeSound();
              select.RunStart();
              
             }
@@ -83,6 +92,7 @@ public class MainMenu {
             @Override
          public void actionPerformed(ActionEvent e) {
              // this exits the program nmn if clicked
+             MakeSound();
               System.exit(0);
             }
         });
@@ -111,10 +121,24 @@ public class MainMenu {
 
         // Eto nmn nirerefresh nya lang yung main frame para gudshit na sya
         mainFrame.repaint();
+
+
     }
 
-    public void RunStart(){
-
+    public static void MakeSound(){
+        File file = new File("character-selection/src/res/Sounds/Retro UI Sounds/Bonus/ui_pause.wav" );
+        try {
+           AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+           Clip clip = AudioSystem.getClip();
+           clip.open(audioStream);
+           clip.start();
+       } catch (UnsupportedAudioFileException e1) {
+           e1.printStackTrace();
+       } catch (IOException e1) {
+           e1.printStackTrace();
+       } catch (LineUnavailableException e1) {
+           e1.printStackTrace();
+       }
     }
 
 }

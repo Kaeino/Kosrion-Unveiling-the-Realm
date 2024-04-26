@@ -1,8 +1,16 @@
 package mainselection;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+
 import characterselection.*;
 
 public class MainSelection extends JPanel implements Runnable, ActionListener{
@@ -63,8 +71,8 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 		}
 
        private void SwitchPanels(){
-        vars.panelMoveSelect -= 95;
-        vars.panelMoveMainMenu -= 95;
+        vars.panelMoveSelect -= 50;
+        vars.panelMoveMainMenu -= 50;
        
             if(vars.panelMoveSelect >= 0){
          
@@ -81,7 +89,23 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-           
+            for( int i = 0; i<4; i++){
+            if(e.getSource() == vars.btnMainClass[i]){
+                         File file = new File("character-selection/src/res/Sounds/Retro UI Sounds/Accept/ui_accept_4.wav" );
+                         try {
+                            AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(audioStream);
+                            clip.start();
+                        } catch (UnsupportedAudioFileException e1) {
+                            e1.printStackTrace();
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        } catch (LineUnavailableException e1) {
+                            e1.printStackTrace();
+                        }
+           }        
         }
-	
-}
+   }
+}	
+
