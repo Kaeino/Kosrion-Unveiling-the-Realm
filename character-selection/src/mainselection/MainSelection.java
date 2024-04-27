@@ -137,7 +137,6 @@ void MakeSoundClick(){
    }
 
 ///////////////////////////////////////////////////////////////////
-
    void MainClassPanelSetup(){
 
     this.setSize(950,550);
