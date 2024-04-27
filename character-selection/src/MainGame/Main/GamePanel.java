@@ -132,4 +132,9 @@ public class GamePanel extends JPanel implements  Runnable{
 
         g2.dispose();
     }
+
+    public  void showMainGame(JFrame gameFrame)
+    {
+        gameFrame.add(this);
+    }
 }
