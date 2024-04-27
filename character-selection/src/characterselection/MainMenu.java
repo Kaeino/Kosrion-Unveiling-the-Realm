@@ -37,9 +37,10 @@ public class MainMenu {
         mainMenuPanel.setLocation(0,0);
         mainMenuPanel.setSize(950,500);
 
-        // damnn adding it sa taas ng mainmenubg
+        // damnn adding it sa taas ng mainmenubg plus other panels from mainselection(Psalm's package)
         mainMenuBg.add(mainMenuPanel);
         mainMenuBg.add(select);    
+        mainMenuBg.add(select.pnlSubClasses);
 
         // Damn eto nmn label pang display ng Background Image
         JLabel backgroundLabel = new JLabel();
