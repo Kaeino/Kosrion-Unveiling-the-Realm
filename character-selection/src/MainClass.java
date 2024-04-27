@@ -5,11 +5,13 @@ import java.io.File;
 import java.io.IOException;
 
 //damnn eto packages, para magamit yung character-selection-package
-import MainGame.Main.GameFrame;
+//import MainGame.Main.GameFrame;
 import MainGame.Main.GamePanel;
 import characterselection.*;
 import characterselection.SplashScreen;
 import mainselection.MainSelection;
+
+//shesh
 
 public class MainClass {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
