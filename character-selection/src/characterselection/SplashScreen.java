@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SplashScreen {
+
     public static void show() {
         JFrame splashFrame = new JFrame();
 
