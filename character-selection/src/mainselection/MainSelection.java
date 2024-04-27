@@ -95,31 +95,15 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
  public void actionPerformed(ActionEvent e) {
             for( int i = 0; i<4; i++){
             if(e.getSource() == vars.btnMainClass[i]){
-                    MakeSoundClick();
+                    MakeSound();
 
                     vars.SwitchSubPanels = true;
            }        
         }
    }
-///////////////////////////////////////////////////////////////////
-void MakeSoundClick(){
 
-    File file = new File("character-selection/src/res/Sounds/Retro UI Sounds/Accept/ui_accept_1.wav" );
-    try {
-       AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-       Clip clip = AudioSystem.getClip();
-       clip.open(audioStream);
-       clip.start();
-   } catch (UnsupportedAudioFileException e1) {
-       e1.printStackTrace();
-   } catch (IOException e1) {
-       e1.printStackTrace();
-   } catch (LineUnavailableException e1) {
-       e1.printStackTrace();
-   }
-}
 ///////////////////////////////////////////////////////////////////
-   void MakeSoundHover(){
+   void MakeSound(){
     
     File file = new File("character-selection/src/res/Sounds/Retro UI Sounds/Accept/ui_accept_4.wav" );
     try {
@@ -166,7 +150,7 @@ void MakeSoundClick(){
         vars.btnMainClass[i].addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                MakeSoundHover();
+                MakeSound();
              }
             });
         }
