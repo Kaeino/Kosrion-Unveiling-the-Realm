@@ -121,6 +121,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
    }
 
 ///////////////////////////////////////////////////////////////////
+
    void MainClassPanelSetup(){
 
     this.setSize(950,550);
