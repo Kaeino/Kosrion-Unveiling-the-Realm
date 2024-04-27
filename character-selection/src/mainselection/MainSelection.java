@@ -7,6 +7,7 @@ import java.awt.event.*;
 import java.io.*;
 import characterselection.*;
 
+
 public class MainSelection extends JPanel implements Runnable, ActionListener{
 
     MainSelectionVars vars = new MainSelectionVars();
@@ -143,7 +144,24 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
     vars.btnMainClass[2].setIcon(vars.demon);
     vars.btnMainClass[3].setIcon(vars.dwarf);
 
-   }
+
+    // Added hover sounds damnnnn
+    for (int i = 0; i < 4; i++) {
+        vars.btnMainClass[i].addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                MakeSound();
+             }
+            });
+        }
+    }
+
+
+   
+
+   
+
+   
 
 ///////////////////////////////////////////////////////////////////
    void SubClassesPanelSetup(){
