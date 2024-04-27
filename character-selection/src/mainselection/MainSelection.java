@@ -81,15 +81,23 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 ///////////////////////////////////////////////////////////////////
  private void SwitchSubPanels(){
 
-    if(vars.panelMoveSubClasses > 0){
+    if(vars.panelMoveSubClasses > 0 && vars.backPanel == false){
         vars.panelMoveMainClasses -= 50;
         vars.panelMoveSubClasses -= 50;
+        this.setLocation(vars.panelMoveMainClasses, 0);
+        pnlSubClasses.setLocation(vars.panelMoveSubClasses, 0);
+    }
+    else if(vars.panelMoveSubClasses < 950 && vars.backPanel == true){
+        vars.panelMoveMainClasses += 50;
+        vars.panelMoveSubClasses += 50;
         this.setLocation(vars.panelMoveMainClasses, 0);
         pnlSubClasses.setLocation(vars.panelMoveSubClasses, 0);
     }
     else{
         vars.SwitchSubPanels = false;
     }
+
+
  }
 
 ///////////////////////////////////////////////////////////////////
@@ -100,8 +108,15 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
                     MakeSoundClick();
                     vars.MainClassPick = i;          
                     vars.SwitchSubPanels = true;      
+                    vars.backPanel = false;
                     SwitchSubClass();             
                } 
+         }
+
+         if (e.getSource() == vars.btnBack){
+            MakeSoundClick();
+            vars.SwitchSubPanels = true;
+            vars.backPanel = true;
          }
 
          for(int j = 0; j<2 ; j++){
@@ -110,7 +125,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
                 switch (j) {
                     case 0: vars.SubClassPick = 0; break;
-                    case 1: vars.SubClassPick = 1; System.out.println("damn"); break;
+                    case 1: vars.SubClassPick = 1; break;
                 }
                 SwitchSubClass();
 
@@ -241,6 +256,10 @@ void SwitchSubClass(){
     pnlSubClasses.setSize(950,550);
     pnlSubClasses.setLocation(950,0);
     pnlSubClasses.setLayout(null);
+
+    vars.btnBack.addActionListener(this);
+    vars.btnBack.setBounds(10,10,20,20);
+    pnlSubClasses.add(vars.btnBack);
 
     for (int i = 0; i<2; i++){
 

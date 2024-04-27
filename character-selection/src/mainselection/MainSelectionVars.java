@@ -7,6 +7,7 @@ import javax.swing.*;
  JButton[] btnMainClass = new JButton[4];
  JButton[] btnSwitchSub = new JButton[2];
  JPanel[] pnlSmalls = new JPanel[3];
+ JButton btnBack = new JButton();
 
 ImageIcon human = new ImageIcon("character-selection/src/res/sprites/Human.gif");
 ImageIcon elf = new ImageIcon("character-selection/src/res/sprites/Elf.gif");
@@ -19,6 +20,7 @@ JLabel img = new JLabel(subClassImg);
 
  boolean SwitchMainPanels = true;
  boolean SwitchSubPanels;
+ boolean backPanel;
 
  int buttonMoveClasses = 109;
  int panelMoveSelect = 950;
