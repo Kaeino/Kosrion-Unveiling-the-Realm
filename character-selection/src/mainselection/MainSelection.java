@@ -5,6 +5,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.concurrent.Flow;
+
 import characterselection.*;
 
 
@@ -96,10 +98,24 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             for( int i = 0; i<4; i++){
             if(e.getSource() == vars.btnMainClass[i]){
                     MakeSoundClick();
+                    vars.MainClassPick = i;          
+                    vars.SwitchSubPanels = true;      
+                    SwitchSubClass();             
+               } 
+         }
 
-                    vars.SwitchSubPanels = true;
-           }        
-        }
+         for(int j = 0; j<2 ; j++){
+
+            if(e.getSource() == vars.btnSwitchSub[j]){
+
+                switch (j) {
+                    case 0: vars.SubClassPick = 0; break;
+                    case 1: vars.SubClassPick = 1; System.out.println("damn"); break;
+                }
+                SwitchSubClass();
+
+            }  
+      }
    }
 ///////////////////////////////////////////////////////////////////
 void MakeSoundClick(){
@@ -135,6 +151,51 @@ void MakeSoundClick(){
        e1.printStackTrace();
    }
    }
+///////////////////////////////////////////////////////////////////
+
+void SwitchSubClass(){
+    if(vars.MainClassPick == 0){
+        if(vars.SubClassPick == 0){
+            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Rogue.gif");
+            vars.img.setIcon(vars.subClassImg);
+        }
+        else{
+            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Hero.gif");
+            vars.img.setIcon(vars.subClassImg);
+        }
+    }
+    else if(vars.MainClassPick == 1){
+        if(vars.SubClassPick == 0){
+            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/HighElf.gif");
+            vars.img.setIcon(vars.subClassImg);
+        }
+        else{
+            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/DarkElf.gif");
+            vars.img.setIcon(vars.subClassImg);
+        }
+    }
+    else if(vars.MainClassPick == 2){
+        if(vars.SubClassPick == 0){
+            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Youkai.gif");
+            vars.img.setIcon(vars.subClassImg);
+        }
+        else{
+            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/ArchDemon.gif");
+            vars.img.setIcon(vars.subClassImg);
+        }
+    }
+    else if(vars.MainClassPick == 3){
+        if(vars.SubClassPick == 0){
+            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Warrior.gif");
+            vars.img.setIcon(vars.subClassImg);
+        }
+        else{
+            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Weaponsmith.gif");
+            vars.img.setIcon(vars.subClassImg);
+        }
+    }
+
+}
 
 ///////////////////////////////////////////////////////////////////
    void MainClassPanelSetup(){
@@ -181,19 +242,31 @@ void MakeSoundClick(){
     pnlSubClasses.setLocation(950,0);
     pnlSubClasses.setLayout(null);
 
-    for (int i = 0; i<3; i++){
+    for (int i = 0; i<2; i++){
 
-        vars.pnlSmalls[i] = new JPanel();
+        vars.pnlSmalls[i] = new JPanel(new BorderLayout());
         vars.pnlSmalls[i].setBackground(new Color(128,128,128,255));
         vars.pnlSmalls[i].setSize(150,200);
         vars.pnlSmalls[i].setLocation(vars.panelSmallsGap, 100);
         vars.panelSmallsGap +=170;
-       pnlSubClasses.add(vars.pnlSmalls[i]);
-    }
 
+       pnlSubClasses.add(vars.pnlSmalls[i]);
+
+       vars.btnSwitchSub[i] = new JButton();
+       vars.btnSwitchSub[i].addActionListener(this);
+       vars.btnSwitchSub[i].setSize(50,50);
+       pnlSubClasses.add(vars.btnSwitchSub[i]);
+       
+    }
+    vars.btnSwitchSub[0].setLocation(200,250);
+    vars.btnSwitchSub[1].setLocation(685,250);
+
+    vars.pnlSmalls[2] = new JPanel();
+    vars.pnlSmalls[2].setBackground(new Color(128,128,128,255));
     vars.pnlSmalls[2].setSize(320,150);
     vars.pnlSmalls[2].setLocation(307,320);
-
+    pnlSubClasses.add(vars.pnlSmalls[2]);
+    vars.pnlSmalls[0].add(vars.img, BorderLayout.CENTER);
    }
 }	
 
