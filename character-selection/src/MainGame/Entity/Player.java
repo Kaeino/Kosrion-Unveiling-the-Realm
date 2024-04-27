@@ -1,0 +1,145 @@
+package MainGame.Entity;
+
+import MainGame.Main.GamePanel;
+import MainGame.Main.KeyHandler;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+public class Player extends Entity
+{
+    GamePanel gp;
+    KeyHandler keyH;
+
+    public  final int screenX;
+    public  final  int screenY;
+
+    public Player(GamePanel gp, KeyHandler keyH) {
+        this.gp = gp;
+        this.keyH = keyH;
+
+        // Makes sure that the camera always look at the center [The player]
+        screenX = gp.screenWidth / 2 - (gp.tileSize / 2);   // Division makes sure that the player is really in the center. {if not divided then the position of
+        screenY = gp.screenHeight / 2 - (gp.tileSize / 2);  //  the player will be a little bit placed on top left corner}
+                                                            // To see the difference, run the current code without closing the app then remove the division and run the game again
+
+        setDefaultValues();
+        getPlayerImage();
+    }
+
+    public void setDefaultValues() {
+        worldX = gp.tileSize * 23;  // Used to set player starting position [can write 1000 or this]
+        worldY = gp.tileSize * 21;  // Used to set player starting position [can write 1000 or this]
+        speed = 4;
+        direction = "down";
+    }
+
+    public void getPlayerImage() {
+        try {
+            up1 = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Player/boy_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Player/boy_up_2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Player/boy_down_1.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Player/boy_down_2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Player/boy_left_1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Player/boy_left_2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Player/boy_right_1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Player/boy_right_2.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update() {
+        // THIS CODE MAKES SURE THAT THE ANIMATION ONLY PLAYS WHEN ANY OF THE KEYS ARE GETTING PRESSED
+        if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
+            if (keyH.upPressed == true) {
+                direction = "up";
+                worldY -= speed;
+            } else if (keyH.downPressed == true) {
+                direction = "down";
+                worldY += speed;
+            } else if (keyH.leftPressed == true) {
+                direction = "left";
+                worldX -= speed;
+            } else if (keyH.rightPressed == true) {
+                direction = "right";
+                worldX += speed;
+            }
+
+
+            // REMEMBER THAT UPDATE 1 FRAMES EVERY 0.16 SECONDS. NOW THIS IS CALLED 10 FRAMES EVERY 1 SECONDS SO IT'S GOING TO
+            // TURN 1 / 2 / 1 / 2 EVERY 10 FRAMES
+
+            spriteCounter++;
+            if (spriteCounter > 10) {
+                if (spriteNum == 1) {
+                    spriteNum = 2;
+                    System.out.println(1);
+
+                } else if (spriteNum == 2) {
+                    spriteNum = 1;
+                    System.out.println(2);
+                }
+                spriteCounter = 0;
+            }
+        }
+    }
+
+
+    public  void draw(Graphics g2)
+    {
+
+        BufferedImage image = null;
+
+        switch (direction)
+        {
+            case "up":
+                if(spriteNum == 1)
+                {
+                    image = up1;
+                }
+                if(spriteNum == 2)
+                {
+                    image = up2;
+                }
+                break;
+            case "down":
+                if(spriteNum == 1)
+                {
+                    image = down1;
+                }
+                if(spriteNum == 2)
+                {
+                    image = down2;
+                }
+                break;
+            case "left":
+                if(spriteNum == 1)
+                {
+                    image = left1;
+                }
+                if(spriteNum == 2)
+                {
+                    image = left2;
+                }
+                break;
+            case "right":
+                if(spriteNum == 1)
+                {
+                    image = right1;
+                }
+                if(spriteNum == 2)
+                {
+                    image = right2;
+                }
+                break;
+        }
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
+
+       /* g2.setColor(Color.white);
+        g2.fillRect(x,y, gp.tileSize,gp.tileSize);*/
+    }
+}
