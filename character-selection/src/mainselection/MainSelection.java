@@ -145,7 +145,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
     vars.btnMainClass[3].setIcon(vars.dwarf);
 
 
-    // Added hover sounds damnnnn
+    // Added hover sounds damnn
     for (int i = 0; i < 4; i++) {
         vars.btnMainClass[i].addMouseListener(new MouseAdapter() {
             @Override
@@ -156,12 +156,6 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
         }
     }
 
-
-   
-
-   
-
-   
 
 ///////////////////////////////////////////////////////////////////
    void SubClassesPanelSetup(){
