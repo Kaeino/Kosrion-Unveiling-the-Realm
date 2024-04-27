@@ -51,7 +51,6 @@ public class MainClass {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
         clip.start();
 
-
         // Call this class on button click to show the game [MAKE SURE CLOSE THE MAIN FRAME DIN]
         // GameFrame game = new GameFrame();
         // game.showGame();

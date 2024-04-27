@@ -23,7 +23,13 @@ public class Player extends Entity
         // Makes sure that the camera always look at the center [The player]
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);   // Division makes sure that the player is really in the center. {if not divided then the position of
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);  //  the player will be a little bit placed on top left corner}
-                                                            // To see the difference, run the current code without closing the app then remove the division and run the game again
+
+        // Default character size is 48 by 48 pixels, this only creates a box collider in the specified location
+        solidArea = new Rectangle();
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidArea.width = 32;
+        solidArea.height = 32;
 
         setDefaultValues();
         getPlayerImage();
@@ -56,18 +62,39 @@ public class Player extends Entity
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
             if (keyH.upPressed == true) {
                 direction = "up";
-                worldY -= speed;
             } else if (keyH.downPressed == true) {
                 direction = "down";
-                worldY += speed;
             } else if (keyH.leftPressed == true) {
                 direction = "left";
-                worldX -= speed;
             } else if (keyH.rightPressed == true) {
                 direction = "right";
-                worldX += speed;
             }
 
+            // CHECK TILE COLLISION
+            collisionOn = false;
+            gp.cCHecker.checkTile(this);
+
+            // IF COLLISION IS FALSE, PLAYER CAN MOVE
+            if(collisionOn == false)
+            {
+                switch(direction) {
+
+                    case "up":
+                        worldY -= speed;
+                        break;
+                    case "down":
+                        worldY += speed;
+                        break;
+                    case "left":
+                        worldX -= speed;
+                        break;
+                    case "right":
+                        worldX += speed;
+                        break;
+
+                }
+
+            }
 
             // REMEMBER THAT UPDATE 1 FRAMES EVERY 0.16 SECONDS. NOW THIS IS CALLED 10 FRAMES EVERY 1 SECONDS SO IT'S GOING TO
             // TURN 1 / 2 / 1 / 2 EVERY 10 FRAMES
