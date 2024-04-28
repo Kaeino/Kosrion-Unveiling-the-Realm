@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.concurrent.Flow;
 
 import characterselection.*;
+import Classes.*;
 
 
 public class MainSelection extends JPanel implements Runnable, ActionListener{
@@ -115,6 +116,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
          if (e.getSource() == vars.btnBack){
             MakeSoundClick();
+            vars.SubClassPick = 0;
             vars.SwitchSubPanels = true;
             vars.backPanel = true;
          }
@@ -209,7 +211,7 @@ void SwitchSubClass(){
             vars.img.setIcon(vars.subClassImg);
         }
     }
-
+        SetupClassDesc();
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -285,7 +287,22 @@ void SwitchSubClass(){
     vars.pnlSmalls[2].setSize(320,150);
     vars.pnlSmalls[2].setLocation(307,320);
     pnlSubClasses.add(vars.pnlSmalls[2]);
+    
     vars.pnlSmalls[0].add(vars.img, BorderLayout.CENTER);
+   }
+
+///////////////////////////////////////////////////////////////////
+   void SetupClassDesc(){
+    MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick);
+
+    vars.stats.setFont(new Font("Calibri",Font.BOLD, 30));
+    vars.lore.setFont(new Font("Calibri",Font.BOLD, 30));
+    vars.stats.setText("<html>Class Stats"+"<br>HP: "+mid.getHP() +"<br>MP: "+ mid.getMP()+"</html>");
+    vars.lore.setText("<html>Class Lore:"+"<br>"+mid.getLore()+"</html>");
+
+    vars.pnlSmalls[1].add(vars.stats);
+    vars.pnlSmalls[2].add(vars.lore);
+
    }
 }	
 

@@ -8,6 +8,8 @@ import javax.swing.*;
  JButton[] btnSwitchSub = new JButton[2];
  JPanel[] pnlSmalls = new JPanel[3];
  JButton btnBack = new JButton();
+ JLabel stats = new JLabel();
+ JLabel lore = new JLabel();
 
 ImageIcon human = new ImageIcon("character-selection/src/res/sprites/Human.gif");
 ImageIcon elf = new ImageIcon("character-selection/src/res/sprites/Elf.gif");
