@@ -24,6 +24,8 @@ public class MainClass {
         clip.open(audioStream);
 
 
+        // comments
+
 
         // 1st - this show the splash screen muna
         SplashScreen.show();
