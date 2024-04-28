@@ -6,21 +6,24 @@ import java.io.IOException;
 
 //damnn eto packages, para magamit yung character-selection-package
 //import MainGame.Main.GameFrame;
-import MainGame.Main.GamePanel;
+//import MainGame.Main.GamePanel;
 import characterselection.*;
 import characterselection.SplashScreen;
-import mainselection.MainSelection;
+//import mainselection.MainSelection;
 
 //shesh
 
 public class MainClass {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 
+
         // these four lines setup for the music but don't play it, music play command is in line 47 - 49
         File file = new File("character-selection/src/res/Music/BGM.wav");
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
+
+
 
         // 1st - this show the splash screen muna
         SplashScreen.show();
@@ -52,6 +55,8 @@ public class MainClass {
         // Hi, I'm music play command, first commands makes the music loop, 2nd command makes the music play, DAMN Discord Bot Command neh XD, Damn Groovy Memories
         clip.loop(Clip.LOOP_CONTINUOUSLY);
         clip.start();
+
+        
 
         // Call this class on button click to show the game [MAKE SURE CLOSE THE MAIN FRAME DIN]
         // GameFrame game = new GameFrame();

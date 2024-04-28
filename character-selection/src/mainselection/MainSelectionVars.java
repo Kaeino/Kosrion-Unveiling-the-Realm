@@ -1,6 +1,6 @@
 package mainselection;
 
-import java.awt.*;
+//import java.awt.*;
 import javax.swing.*;
  class MainSelectionVars {
     

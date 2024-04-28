@@ -1,7 +1,7 @@
 package MainGame.Main;
 
 import MainGame.Entity.Player;
-import MainGame.Main.KeyHandler;
+//import MainGame.Main.KeyHandler;
 import MainGame.Tile.TIleManager;
 
 import javax.swing.*;
