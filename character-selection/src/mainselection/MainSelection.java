@@ -13,6 +13,7 @@ import Classes.*;
 
 public class MainSelection extends JPanel implements Runnable, ActionListener{
 
+    public boolean SwitchMainPanels = true;
     MainSelectionVars vars = new MainSelectionVars();
     characterselection.MainMenu menu = new MainMenu();
     public JPanel pnlSubClasses = new JPanel();
@@ -47,7 +48,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             timer += (currentTime - lastTime);
             lastTime = currentTime;
             if (delta >= 1) {
-                if(vars.SwitchMainPanels == true){
+                if(SwitchMainPanels == true){
                     SwitchMainPanels();
                 }
                 if(vars.SwitchSubPanels == true){
@@ -65,20 +66,32 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
 ///////////////////////////////////////////////////////////////////
  private void SwitchMainPanels(){
-        vars.panelMoveSelect -= 50;
-        vars.panelMoveMainMenu -= 50;
-       
-            if(vars.panelMoveSelect >= 0){
-         
+
+       if(vars.returnMenu == false){
+            if(vars.panelMoveSelect > 0 && vars.returnMenu == false){
+                vars.panelMoveSelect -= 50;
+                vars.panelMoveMainMenu -= 50;
                 characterselection.MainMenu.mainMenuPanel.setLocation(vars.panelMoveMainMenu,0);
                 this.setLocation(vars.panelMoveSelect,0);
             }
             else{
-                vars.SwitchMainPanels = false;
-                System.out.println(vars.panelMoveSelect);
+                SwitchMainPanels = false;
+                System.out.println(vars.panelMoveSelect + "damnnn");
+            }
+       }
+       else{
+            if(vars.returnMenu == true && vars.panelMoveSelect < 950){
+                vars.panelMoveSelect += 50;
+                vars.panelMoveMainMenu += 50;
+                characterselection.MainMenu.mainMenuPanel.setLocation(vars.panelMoveMainMenu,0);
+                this.setLocation(vars.panelMoveSelect,0);
+            }
+            else{
+                vars.returnMenu = false;
+                SwitchMainPanels = false;
             }
         }
-
+   }
 ///////////////////////////////////////////////////////////////////
  private void SwitchSubPanels(){
 
@@ -114,7 +127,13 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
                } 
          }
 
-         if (e.getSource() == vars.btnBack){
+         if(e.getSource() == vars.btnBacktoMenu){
+            MakeSoundClick();
+            vars.returnMenu = true;
+            SwitchMainPanels = true;
+         }
+
+         if (e.getSource() == vars.btnBacktoMainClass){
             MakeSoundClick();
             vars.SubClassPick = 0;
             vars.SwitchSubPanels = true;
@@ -238,6 +257,10 @@ void SwitchSubClass(){
     vars.btnMainClass[2].setIcon(vars.demon);
     vars.btnMainClass[3].setIcon(vars.dwarf);
 
+    vars.btnBacktoMenu.setBounds(10,10,20,20);
+    vars.btnBacktoMenu.addActionListener(this);
+    this.add(vars.btnBacktoMenu);
+
 
     // Added hover sounds damnn
     for (int i = 0; i < 4; i++) {
@@ -259,9 +282,9 @@ void SwitchSubClass(){
     pnlSubClasses.setLocation(950,0);
     pnlSubClasses.setLayout(null);
 
-    vars.btnBack.addActionListener(this);
-    vars.btnBack.setBounds(10,10,20,20);
-    pnlSubClasses.add(vars.btnBack);
+    vars.btnBacktoMainClass.addActionListener(this);
+    vars.btnBacktoMainClass.setBounds(10,10,20,20);
+    pnlSubClasses.add(vars.btnBacktoMainClass);
 
     for (int i = 0; i<2; i++){
 
@@ -285,11 +308,14 @@ void SwitchSubClass(){
     vars.pnlSmalls[2] = new JPanel();
     vars.pnlSmalls[2].setBackground(new Color(128,128,128,255));
     vars.pnlSmalls[2].setSize(320,150);
-    vars.pnlSmalls[2].setLocation(307,320);
-    pnlSubClasses.add(vars.pnlSmalls[2]);
-    
+    vars.pnlSmalls[2].setLocation(307,320);    
+    vars.pnlSmalls[2].setLayout(new FlowLayout());
+
+    vars.pnlSmalls[1].setLayout(new FlowLayout());
     vars.pnlSmalls[0].add(vars.img, BorderLayout.CENTER);
-   }
+
+    pnlSubClasses.add(vars.pnlSmalls[2]);
+}
 
 ///////////////////////////////////////////////////////////////////
    void SetupClassDesc(){

@@ -87,7 +87,7 @@ public class MiddleMan extends FinalPick {
             break;    
         }
 
-        super.CharacterStats(HP, MP, Lore);
+        super.setCharacterStats(HP, MP, Lore);
 
     }
 

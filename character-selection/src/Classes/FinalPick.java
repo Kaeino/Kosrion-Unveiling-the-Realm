@@ -1,12 +1,12 @@
 package Classes;
 
-public class FinalPick {
+public abstract class FinalPick {
     
     private int HP;
     private int MP;
     private String Lore;
 
-    public void CharacterStats(int hp, int mp, String lore){
+    public void setCharacterStats(int hp, int mp, String lore){
         this.HP = hp;
         this.MP = mp;
         this.Lore = lore;

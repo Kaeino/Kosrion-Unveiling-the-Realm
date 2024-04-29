@@ -73,6 +73,7 @@ public class MainMenu {
             // button is clicked? then will go open the MainSelection.java file (IMMA CONTINUE THIS NYAN) -P   
             MakeSound();
              select.RunStart();
+             select.SwitchMainPanels = true;
              
             }
         });

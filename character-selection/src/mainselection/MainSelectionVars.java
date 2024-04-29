@@ -7,7 +7,8 @@ import javax.swing.*;
  JButton[] btnMainClass = new JButton[4];
  JButton[] btnSwitchSub = new JButton[2];
  JPanel[] pnlSmalls = new JPanel[3];
- JButton btnBack = new JButton();
+ JButton btnBacktoMainClass = new JButton();
+ JButton btnBacktoMenu = new JButton();
  JLabel stats = new JLabel();
  JLabel lore = new JLabel();
 
@@ -20,9 +21,9 @@ JLabel img = new JLabel(subClassImg);
 
  Thread thread;
 
- boolean SwitchMainPanels = true;
  boolean SwitchSubPanels;
  boolean backPanel;
+ boolean returnMenu;
 
  int buttonMoveClasses = 109;
  int panelMoveSelect = 950;
