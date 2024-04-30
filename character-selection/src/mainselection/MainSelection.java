@@ -7,6 +7,7 @@ import java.awt.event.*;
 import java.io.*;
 //import java.util.concurrent.Flow;
 
+import MainGame.Main.GameFrame;
 import characterselection.*;
 import Classes.*;
 
@@ -16,6 +17,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
     public boolean SwitchMainPanels = true;
     MainSelectionVars vars = new MainSelectionVars();
     characterselection.MainMenu menu = new MainMenu();
+    MainClass main = new MainClass();
     public JPanel pnlSubClasses = new JPanel();
 
     public MainSelection(){
@@ -131,6 +133,13 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             MakeSoundClick();
             vars.returnMenu = true;
             SwitchMainPanels = true;
+         }
+
+         if(e.getSource() == vars.btnStartGame){
+           main.mainFrame.hide();
+           GameFrame game = new GameFrame();
+           game.showGame();
+
          }
 
          if (e.getSource() == vars.btnBacktoMainClass){
@@ -305,6 +314,10 @@ void SwitchSubClass(){
     vars.btnSwitchSub[0].setLocation(200,250);
     vars.btnSwitchSub[1].setLocation(685,250);
 
+    vars.btnStartGame.setBounds(875,450, 40,40);
+    vars.btnStartGame.addActionListener(this);
+    pnlSubClasses.add(vars.btnStartGame);
+
     vars.pnlSmalls[2] = new JPanel();
     vars.pnlSmalls[2].setBackground(new Color(128,128,128,255));
     vars.pnlSmalls[2].setSize(320,150);
@@ -313,7 +326,6 @@ void SwitchSubClass(){
 
     vars.pnlSmalls[1].setLayout(new FlowLayout());
     vars.pnlSmalls[0].add(vars.img, BorderLayout.CENTER);
-
     pnlSubClasses.add(vars.pnlSmalls[2]);
 }
 

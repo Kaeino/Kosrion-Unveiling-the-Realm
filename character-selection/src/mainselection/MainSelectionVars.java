@@ -9,6 +9,7 @@ import javax.swing.*;
  JPanel[] pnlSmalls = new JPanel[3];
  JButton btnBacktoMainClass = new JButton();
  JButton btnBacktoMenu = new JButton();
+ JButton btnStartGame = new JButton();
  JLabel stats = new JLabel();
  JLabel lore = new JLabel();
 

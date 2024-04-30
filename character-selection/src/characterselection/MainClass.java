@@ -1,19 +1,18 @@
+package characterselection;
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-//damnn eto packages, para magamit yung character-selection-package
-//import MainGame.Main.GameFrame;
-//import MainGame.Main.GamePanel;
-import characterselection.*;
-import characterselection.SplashScreen;
-//import mainselection.MainSelection;
-
 //shesh
 
 public class MainClass {
+
+    
+        // Eto yung Main Frame, and it's values like sa CSS
+       public static JFrame mainFrame = new JFrame("Kosrion");
+
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 
 
@@ -29,9 +28,6 @@ public class MainClass {
 
         // 1st - this show the splash screen muna
         SplashScreen.show();
-
-        // Eto yung Main Frame, and it's values like sa CSS
-        JFrame mainFrame = new JFrame("Kosrion");
 
         //damnnnn, closing shit
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
