@@ -22,7 +22,6 @@ public class GameFrame {
         gamePanel.setUpGame();
 
         GameUI ui = new GameUI(gamePanel);
-        ui.initializePausePanel(window);
 
         gamePanel.startGameThread();
     }

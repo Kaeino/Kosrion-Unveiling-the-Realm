@@ -17,24 +17,25 @@ public class GameUI {
         arial_40 = new Font("Arial", Font.PLAIN, 40);
 
         pauseMenu = new JPanel();
-        pauseMenu.setVisible(false); // Hide it initially
     }
 
 //+======================+++++++++++++++++++++++++++++++++++================================
     // PSALM HELP
-    public  void initializePausePanel(JFrame frame)
+    public  void initializePausePanel(GamePanel gp)
     {
         // Initialize JPanel for Swing components
         pauseMenu.setLayout(new GridLayout(3, 1));
         pauseMenu.setBackground(new Color(0,0,0,128));
 
         // Makes the whole screen dark
-        pauseMenu.setSize(frame.getWidth(), frame.getHeight());
-     //   pauseMenu.setBounds(0, 0, frame.getWidth(), frame.getHeight());
+        pauseMenu.setSize(gp.screenWidth, gp.screenHeight);
+    //    pauseMenu.setBounds(0, 0, gp.getWidth(), gp.getHeight());
 
         // BUTTON CODES GO THERE
         JButton continueButton = new JButton("Continue");
+        continueButton.setFocusable(false);
         JButton mainMenuButton = new JButton("Main Menu");
+        mainMenuButton.setFocusable(false);
 
         continueButton.addActionListener(new ActionListener() {
             @Override
@@ -53,11 +54,9 @@ public class GameUI {
         pauseMenu.add(continueButton);
         pauseMenu.add(mainMenuButton);
 
-        frame.add(pauseMenu);
-
-        frame.revalidate();
-        frame.repaint();
+        gp.add(pauseMenu);
     }
+
     public  void draw(Graphics2D g2)
     {
         this.g2 = g2;
@@ -66,13 +65,11 @@ public class GameUI {
 
         if(gp.gameState == gp.playState)
         {
-            pauseMenu.hide();
-            pauseMenu.setVisible(false);
+            pauseMenu.setLocation(1000,1000);
         }
         if(gp.gameState == gp.pauseState)
-        {
-            pauseMenu.show();
-            pauseMenu.setVisible(true);
+        {   
+            pauseMenu.setLocation(0,0);
 
             // eto nagpapakita ng "pause" text pag naka pause
             drawPauseScreen();

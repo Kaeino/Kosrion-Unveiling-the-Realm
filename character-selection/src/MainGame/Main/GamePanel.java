@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements  Runnable{
    public   TIleManager tileM = new TIleManager(this);
     KeyHandler keyH = new KeyHandler(this);
     public GameUI ui = new GameUI(this);
-    Thread gameThread;
+    public Thread gameThread;
     public CollisionChecker cCHecker = new CollisionChecker(this);
 
     public Player player = new Player(this, keyH);
@@ -52,7 +52,7 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
-
+        ui.initializePausePanel(this);
 
 
     }
@@ -121,16 +121,18 @@ public class GamePanel extends JPanel implements  Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
 
-        // TILES SHOULD BE DRAWN FIRST BECAUSE IF THE PLAYER IS DRAWN FIRST, THE PLAYER WILL BE UNDER THE TILES
-        tileM.draw(g2);
+         // TILES SHOULD BE DRAWN FIRST BECAUSE IF THE PLAYER IS DRAWN FIRST, THE PLAYER WILL BE UNDER THE TILES
+         tileM.draw(g2);
 
-        // PLAYER
-        player.draw(g2);
+         // PLAYER
+         player.draw(g2);
+         // UI
+         ui.draw(g2);
 
-        // UI
-       ui.draw(g2);
-
-        g2.dispose();
+        if(gameState == playState)
+        {
+            g2.dispose();   
+        }      
     }
     public  void showMainGame(JFrame gameFrame)
     {
