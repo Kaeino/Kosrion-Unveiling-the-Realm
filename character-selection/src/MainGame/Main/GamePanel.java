@@ -27,13 +27,24 @@ public class GamePanel extends JPanel implements  Runnable{
 
 
     int FPS = 60;
+
+
+
    public   TIleManager tileM = new TIleManager(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
+    public GameUI ui = new GameUI(this);
     Thread gameThread;
     public CollisionChecker cCHecker = new CollisionChecker(this);
 
     public Player player = new Player(this, keyH);
 
+
+    // GAME STATE
+    public  int gameState;
+    public  final int playState = 0;
+    public  final int pauseState = 1;
+
+    // JPanel for holding Swing components
     public  GamePanel()
     {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -41,6 +52,15 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+
+
+
+    }
+
+    // FIND WHERE TO PUT THIS
+    public  void setUpGame()
+    {
+        gameState = playState;
     }
 
     public  void startGameThread()
@@ -77,64 +97,41 @@ public class GamePanel extends JPanel implements  Runnable{
             }
             if(timer >= 1000000000)
             {
-                System.out.println("drawCount = " + drawCount);
+                //    System.out.println("drawCount = " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
         }
-
-
-        //[SLEEP METHOD UPDATE [NOT WORKING]]
-       /* double drawInterval = 1000000000 / FPS; // 0.16 seconds
-        double nextDrawTime = System.nanoTime() + drawInterval;
-
-
-        while (gameThread != null) {
-            System.out.printf("RUNNNNN");
-            long currentTIme = System.nanoTime();
-
-            /// UPDATE INFORMATION SUCH AS CHARACTER POSITION
-            update();
-
-            /// DRAW THE SCREEN WITH THE UPDATED INFORMATION
-            repaint();
-
-            try {
-                double remainingTime = nextDrawTime = System.nanoTime();
-                remainingTime = remainingTime / 1000000;
-
-                if (remainingTime < 0) {
-                    remainingTime = 0;
-                }
-
-                Thread.sleep((long) remainingTime);
-
-                nextDrawTime += drawInterval;
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
     }
 
     public void update()
     {
-        player.update();
+        if(gameState == playState)
+        {
+            player.update();
+        }
+        if(gameState == pauseState)
+        {
+            // Do nothing
+        }
     }
 
     public  void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-
-        Graphics2D g2 = (Graphics2D)   g;
+        Graphics2D g2 = (Graphics2D)g;
 
         // TILES SHOULD BE DRAWN FIRST BECAUSE IF THE PLAYER IS DRAWN FIRST, THE PLAYER WILL BE UNDER THE TILES
         tileM.draw(g2);
+
+        // PLAYER
         player.draw(g2);
+
+        // UI
+       ui.draw(g2);
 
         g2.dispose();
     }
-
     public  void showMainGame(JFrame gameFrame)
     {
         gameFrame.add(this);

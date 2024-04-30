@@ -1,6 +1,7 @@
 package MainGame.Main;
 
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 
 public class GameFrame {
     public void showGame()
@@ -17,6 +18,11 @@ public class GameFrame {
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+
+        gamePanel.setUpGame();
+
+        GameUI ui = new GameUI(gamePanel);
+        ui.initializePausePanel(window);
 
         gamePanel.startGameThread();
     }
