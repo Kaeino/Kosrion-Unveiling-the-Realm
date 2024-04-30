@@ -21,15 +21,14 @@ public class GameUI {
 
 //+======================+++++++++++++++++++++++++++++++++++================================
     // PSALM HELP
-    public  void initializePausePanel(GamePanel gp)
+    public  void initializePausePanel()
     {
         // Initialize JPanel for Swing components
         pauseMenu.setLayout(new GridLayout(3, 1));
         pauseMenu.setBackground(new Color(0,0,0,128));
 
         // Makes the whole screen dark
-        pauseMenu.setSize(gp.screenWidth, gp.screenHeight);
-    //    pauseMenu.setBounds(0, 0, gp.getWidth(), gp.getHeight());
+        pauseMenu.setPreferredSize(new Dimension(gp.screenWidth, gp.screenHeight));
 
         // BUTTON CODES GO THERE
         JButton continueButton = new JButton("Continue");
@@ -65,11 +64,11 @@ public class GameUI {
 
         if(gp.gameState == gp.playState)
         {
-            pauseMenu.setLocation(1000,1000);
+            pauseMenu.setVisible(false);
         }
         if(gp.gameState == gp.pauseState)
         {   
-            pauseMenu.setLocation(0,0);
+            pauseMenu.setVisible(true);
 
             // eto nagpapakita ng "pause" text pag naka pause
             drawPauseScreen();

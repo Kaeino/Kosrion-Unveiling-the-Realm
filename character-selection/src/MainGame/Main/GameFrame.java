@@ -21,8 +21,6 @@ public class GameFrame {
 
         gamePanel.setUpGame();
 
-        GameUI ui = new GameUI(gamePanel);
-
         gamePanel.startGameThread();
     }
 }
