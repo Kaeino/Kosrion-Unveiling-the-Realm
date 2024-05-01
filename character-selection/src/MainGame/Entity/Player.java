@@ -2,6 +2,7 @@ package MainGame.Entity;
 
 import MainGame.Main.GamePanel;
 import MainGame.Main.KeyHandler;
+import com.sun.nio.sctp.AbstractNotificationHandler;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -40,6 +41,15 @@ public class Player extends Entity
         worldY = gp.tileSize * 21;  // Used to set player starting position [can write 1000 or this]
         speed = 4;
         direction = "down";
+
+        // Player status [ETO DAPAT PALITAN PAG NEED NA INTEGRATE VALUES CODE NI PSALM]
+        name    = "SON GOKU";
+        HP = 100;
+        MP = 999;
+        strength = 9999;
+        attack = 9999;
+        defense = 900;
+        agility = 300;
     }
 
     public void getPlayerImage() {

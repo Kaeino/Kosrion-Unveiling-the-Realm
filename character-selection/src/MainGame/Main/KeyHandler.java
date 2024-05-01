@@ -1,5 +1,7 @@
 package MainGame.Main;
 
+import com.sun.source.tree.IfTree;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -51,6 +53,11 @@ public class KeyHandler implements KeyListener
                 gp.gameState = gp.playState;
                 System.out.println("GAME CONTINUED");
             }
+        }
+
+        if(code == KeyEvent.VK_C)
+        {
+            gp.gameState = gp.characterState;
         }
     }
 

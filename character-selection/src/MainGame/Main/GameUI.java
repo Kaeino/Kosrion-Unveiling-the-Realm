@@ -29,15 +29,6 @@ public class GameUI {
         int panelX = (gp.screenWidth - panelWidth) / 2; // 192
         int panelY = (gp.screenHeight - panelHeight) / 2; // 216
 
-        System.out.println(panelWidth);
-        System.out.println(panelHeight);
-        System.out.println(panelX);
-        System.out.println(panelY);
-
-        System.out.println(gp.screenWidth); // 768
-        System.out.println(gp.screenHeight); // 576
-
-
         // Set bounds for the pause menu panel
         pauseMenu.setBounds(panelX, panelY, panelWidth, panelHeight);
 
@@ -98,6 +89,98 @@ public class GameUI {
             // eto nagpapakita ng "pause" text pag naka pause
             drawPauseScreen();
         }
+        if(gp.gameState == gp.characterState)
+        {
+            // eto nagpapakita ng character stats
+            drawCharacterScreen();
+        }
+    }
+    public  void drawCharacterScreen()
+    {
+        // CREATE A FRAME
+        final int frameX = gp.tileSize * 2;
+        final  int frameY = gp.tileSize;
+        final int frameWidth = gp.tileSize * 5;
+        final int frameHeight = gp.tileSize * 10;
+
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        // TEXTS
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(20F));
+
+        int textX = frameX+ 20;
+        int textY = frameY + gp.tileSize;
+        final int lineHeight = 32;
+
+        // STATS
+        g2.drawString("NAME", textX, textY);
+        textY += lineHeight;
+        g2.drawString("HP", textX, textY);
+        textY += lineHeight;
+        g2.drawString("MP", textX, textY);
+        textY += lineHeight;
+        g2.drawString("STRENGTH", textX, textY);
+        textY += lineHeight;
+        g2.drawString("ATTACK", textX, textY);
+        textY += lineHeight;
+        g2.drawString("DEFENSE", textX, textY);
+        textY += lineHeight;
+        g2.drawString("AGILITY", textX, textY);
+        textY += lineHeight;
+
+        // VALUES
+        int tailX = (frameX + frameWidth ) - 30;
+
+        // Reset textY
+        textY = frameY + gp.tileSize;
+        String value;
+
+        value = String.valueOf(gp.player.name);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.HP);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.MP);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.strength);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.attack);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.defense);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.agility);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+    }
+    public  void drawSubWindow(int x, int y, int width, int height)
+    {
+        Color c = new Color(0,0,0, 210);
+        g2.setColor(c);
+        g2.fillRoundRect(x,y, width, height, 35,35);
+
+        c = new Color(255,255,255);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x+5, y+5, width - 10, height - 10, 25,25);
     }
     public void drawPauseScreen() {
         // Draw a black background with 50% transparency
@@ -122,6 +205,11 @@ public class GameUI {
     public int getXforCenteredText(String text) {
         int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = gp.screenWidth / 2 - length / 2;
+        return x;
+    }
+    public int getXforAlgignToRightText(String text, int tailX) {
+        int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = tailX - length;
         return x;
     }
 }

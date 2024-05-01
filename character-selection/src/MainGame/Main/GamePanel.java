@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public  int gameState;
     public  final int playState = 0;
     public  final int pauseState = 1;
+    public  final  int characterState = 2;
 
     // JPanel for holding Swing components
     public  GamePanel()
@@ -54,7 +55,8 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setFocusable(true);
         ui.initializePausePanel();
 
-
+        System.out.println(this.screenWidth);
+        System.out.println(this.screenHeight);
     }
 
     // FIND WHERE TO PUT THIS
