@@ -136,10 +136,9 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
          }
 
          if(e.getSource() == vars.btnStartGame){
-           main.mainFrame.hide();
+           main.mainFrame.dispose();
            GameFrame game = new GameFrame();
            game.showGame();
-
          }
 
          if (e.getSource() == vars.btnBacktoMainClass){

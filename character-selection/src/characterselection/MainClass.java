@@ -1,6 +1,9 @@
 package characterselection;
 import javax.sound.sampled.*;
 import javax.swing.*;
+
+import MainGame.Main.GameFrame;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -59,7 +62,6 @@ public class MainClass {
         // Call this class on button click to show the game [MAKE SURE CLOSE THE MAIN FRAME DIN]
         // GameFrame game = new GameFrame();
         // game.showGame();
-
-        
+                
     }
 }

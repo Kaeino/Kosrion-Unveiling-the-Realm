@@ -1,15 +1,21 @@
 package MainGame.Main;
 
 import javax.swing.*;
+
+import characterselection.MainClass;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GameUI {
+public class GameUI extends GameFrame{
     GamePanel gp;
     Graphics2D g2;
     Font arial_40;
     JPanel pauseMenu;
+    JButton continueButton;
+    JButton mainMenuButton;
+    MainClass main = new MainClass();
 
     public GameUI(GamePanel gp) {
         this.gp = gp;
@@ -33,8 +39,8 @@ public class GameUI {
         pauseMenu.setBounds(panelX, panelY, panelWidth, panelHeight);
 
         // Add buttons to the pause menu panel
-        JButton continueButton = new JButton("Continue");
-        JButton mainMenuButton = new JButton("Main Menu");
+        continueButton = new JButton("Continue");
+        mainMenuButton = new JButton("Main Menu");
         continueButton.setFocusable(false);
         mainMenuButton.setFocusable(false);
 
@@ -54,13 +60,17 @@ public class GameUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Handle continue button action
+                gp.gameState = gp.playState;
             }
         });
 
         mainMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Handle main menu button action
+                // Handle main menu button action 
+                //ayaw nito tho for some reason, ayaw nya i exit
+                window.setVisible(false);
+                main.mainFrame.show();
             }
         });
 

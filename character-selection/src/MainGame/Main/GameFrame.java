@@ -4,9 +4,12 @@ import javax.swing.*;
 import java.awt.event.KeyEvent;
 
 public class GameFrame {
+
+    public JFrame window = new JFrame();
+
     public void showGame()
     {
-        JFrame window = new JFrame();
+        
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
         window.setTitle("2D Adventure");
@@ -22,5 +25,6 @@ public class GameFrame {
         gamePanel.setUpGame();
 
         gamePanel.startGameThread();
+
     }
 }
