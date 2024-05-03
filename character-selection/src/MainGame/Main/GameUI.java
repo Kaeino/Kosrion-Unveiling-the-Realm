@@ -69,8 +69,6 @@ public class GameUI extends GameFrame{
             public void actionPerformed(ActionEvent e) {
                 // Handle main menu button action 
                 //ayaw nito tho for some reason, ayaw nya i exit
-                window.setVisible(false);
-                main.mainFrame.show();
             }
         });
 
