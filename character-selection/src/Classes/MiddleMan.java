@@ -18,7 +18,7 @@ public class MiddleMan extends FinalPick {
     
                     HP = 1500;
                     MP = 800;
-                    Lore = "DAMN HE HERO";
+                    Lore = "DAMN HE YUUSHA";
     
                     break;
                 case 0: 
@@ -43,7 +43,7 @@ public class MiddleMan extends FinalPick {
     
                     HP = 1200;
                     MP = 1300;
-                    Lore = "DAMN HE DARK ELF";
+                    Lore = "DAMN HE NIGGA ELF";
     
                     break;
             }
