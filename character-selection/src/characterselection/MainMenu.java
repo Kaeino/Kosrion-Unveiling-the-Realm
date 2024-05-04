@@ -70,7 +70,7 @@ public class MainMenu {
         createCharacterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            // button is clicked? then will go open the MainSelection.java file (IMMA CONTINUE THIS NYAN) -P   
+            // button is clicked? then will go open the MainSelection.java file (IMMA CONTINUE THIS NYAN) DAMNN -P   
             MakeSound();
              select.RunStart();
              select.SwitchMainPanels = true;
