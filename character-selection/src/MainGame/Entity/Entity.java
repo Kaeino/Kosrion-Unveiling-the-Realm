@@ -3,7 +3,9 @@ package MainGame.Entity;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Entity {
+import mainselection.MainSelection;
+
+public class Entity{
 
     public  int worldX, worldY;
     public  int x,y;
@@ -18,13 +20,11 @@ public class Entity {
     // CHARACTER ATTRIBUTES
     public  String name;
     public String Lore;
-    public int HP; // IDK what other stats are
+    public int HP;  // IDK what other stats are
     public int MP;
     public  int strength;
     public  int attack;
     public  int defense;
     public  int agility;
-
-
 
 }

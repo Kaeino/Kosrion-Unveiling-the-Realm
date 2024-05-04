@@ -2,7 +2,11 @@ package MainGame.Entity;
 
 import MainGame.Main.GamePanel;
 import MainGame.Main.KeyHandler;
+import mainselection.MainSelection;
+
 import com.sun.nio.sctp.AbstractNotificationHandler;
+
+import Classes.MiddleMan;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -14,13 +18,13 @@ public class Player extends Entity
     GamePanel gp;
     KeyHandler keyH;
 
+
     public  final int screenX;
     public  final  int screenY;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
-
         // Makes sure that the camera always look at the center [The player]
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);   // Division makes sure that the player is really in the center. {if not divided then the position of
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);  //  the player will be a little bit placed on top left corner}
@@ -36,20 +40,27 @@ public class Player extends Entity
         getPlayerImage();
     }
 
+    public void setCharacterStats(int main, int sub){ //New method that sets the character's Stats which uses passed values
+
+        MiddleMan mid = new MiddleMan(main, sub); // This object is ung sa class that sets the character's Stats (Under Classes Package)
+
+                // Player status [ETO DAPAT PALITAN PAG NEED NA INTEGRATE VALUES CODE NI PSALM]
+                name    = "SON GOKU";
+                HP = mid.getHP(); //Methods from Final Pick class (Also under Classes Package)
+                MP = mid.getMP();
+                strength = 9999;
+                attack = 9999;
+                defense = 900;
+                agility = 300;
+
+    }
     public void setDefaultValues() {
         worldX = gp.tileSize * 23;  // Used to set player starting position [can write 1000 or this]
         worldY = gp.tileSize * 21;  // Used to set player starting position [can write 1000 or this]
         speed = 4;
         direction = "down";
 
-        // Player status [ETO DAPAT PALITAN PAG NEED NA INTEGRATE VALUES CODE NI PSALM]
-        name    = "SON GOKU";
-        HP = 100;
-        MP = 999;
-        strength = 9999;
-        attack = 9999;
-        defense = 900;
-        agility = 300;
+
     }
 
     public void getPlayerImage() {

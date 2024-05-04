@@ -3,8 +3,12 @@ package MainGame.Main;
 import MainGame.Entity.Player;
 //import MainGame.Main.KeyHandler;
 import MainGame.Tile.TIleManager;
+import mainselection.MainSelection;
 
 import javax.swing.*;
+
+import Classes.MiddleMan;
+
 import java.awt.*;
 
 public class GamePanel extends JPanel implements  Runnable{
@@ -27,7 +31,6 @@ public class GamePanel extends JPanel implements  Runnable{
 
 
     int FPS = 60;
-
 
 
    public   TIleManager tileM = new TIleManager(this);
@@ -137,8 +140,13 @@ public class GamePanel extends JPanel implements  Runnable{
             g2.dispose();   
         }      
     }
-    public  void showMainGame(JFrame gameFrame)
+    public  void showMainGame(JFrame gameFrame) 
     {
         gameFrame.add(this);
+    }
+    public void Character(int a , int b)// Method I added which gets called when GameFrame gets called.
+    {
+         player.setCharacterStats(a, b);// Calls a method in Player Class which also uses these values passed from MainSelection class
+         // can be considered Method Chaining ung not in the same class idk what thats called i forgor
     }
 }

@@ -7,18 +7,23 @@ import java.awt.event.*;
 import java.io.*;
 //import java.util.concurrent.Flow;
 
+import MainGame.Entity.Entity;
 import MainGame.Main.GameFrame;
 import characterselection.*;
 import Classes.*;
-
-
 public class MainSelection extends JPanel implements Runnable, ActionListener{
 
     public boolean SwitchMainPanels = true;
     MainSelectionVars vars = new MainSelectionVars();
     characterselection.MainMenu menu = new MainMenu();
+    GameFrame game = new GameFrame();
     MainClass main = new MainClass();
     public JPanel pnlSubClasses = new JPanel();
+
+    
+    public int HP;
+    public int MP;
+    public String Lore;
 
     public MainSelection(){
 
@@ -137,11 +142,11 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
          if(e.getSource() == vars.btnStartGame){
            main.mainFrame.dispose();
-           GameFrame game = new GameFrame();
-           game.showGame();
+           game.showGame(vars.MainClassPick, vars.SubClassPick); // Passing MainClassPick and SubClassPick to jersey's Code
          }
 
          if (e.getSource() == vars.btnBacktoMainClass){
+
             MakeSoundClick();
             vars.SubClassPick = 0;
             vars.SwitchSubPanels = true;
@@ -238,6 +243,8 @@ void SwitchSubClass(){
             vars.img.setIcon(vars.subClassImg);
         }
     }
+        
+        SetupClassStats();
         SetupClassDesc();
 }
 
@@ -329,17 +336,23 @@ void SwitchSubClass(){
 }
 
 ///////////////////////////////////////////////////////////////////
-   void SetupClassDesc(){
-    MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick);
+   void SetupClassDesc(){ 
 
     vars.stats.setFont(new Font("Calibri",Font.BOLD, 30));
     vars.lore.setFont(new Font("Calibri",Font.BOLD, 30));
-    vars.stats.setText("<html>Class Stats"+"<br>HP: "+mid.getHP() +"<br>MP: "+ mid.getMP()+"</html>");
-    vars.lore.setText("<html>Class Lore:"+"<br>"+mid.getLore()+"</html>");
+    vars.stats.setText("<html>Class Stats"+"<br>HP: "+HP +"<br>MP: "+ MP+"</html>");
+    vars.lore.setText("<html>Class Lore:"+"<br>"+Lore+"</html>");
 
     vars.pnlSmalls[1].add(vars.stats);
     vars.pnlSmalls[2].add(vars.lore);
 
+   }
+
+  public void SetupClassStats(){
+    MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick);
+    HP = mid.getHP();
+    MP = mid.getMP();
+    Lore = mid.getLore();
    }
 }	
 
