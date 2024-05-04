@@ -24,41 +24,12 @@ public class KeyHandler implements KeyListener
     public void keyPressed(KeyEvent e) {
 
         int code = e.getKeyCode();
-        if(code == KeyEvent.VK_W)
-        {
-            upPressed = true;
-        }
-        if(code == KeyEvent.VK_S)
-        {
-            downPressed = true;
-        }
-        if(code == KeyEvent.VK_A)
-        {
-            leftPressed = true;
-        }
-        if(code == KeyEvent.VK_D)
-        {
-            rightPressed = true;
-        }
+        CharacterControls(code);
+        PauseGamme(code);
+        CharacterStats(code);
 
-        if(code == KeyEvent.VK_ESCAPE)
-        {
-            if(gp.gameState == gp.playState)
-            {
-                gp.gameState = gp.pauseState;
-                System.out.println("GAME PAUSED");
-            }
-            else if(gp.gameState == gp.pauseState)
-            {
-                gp.gameState = gp.playState;
-                System.out.println("GAME CONTINUED");
-            }
-        }
-
-        if(code == KeyEvent.VK_C)
-        {
-            gp.gameState = gp.characterState;
-        }
+        BasicAttack(code);
+        SaySomething(code);
     }
 
     @Override
@@ -82,4 +53,93 @@ public class KeyHandler implements KeyListener
             rightPressed = false;
         }
     }
+
+    private  void CharacterControls(int code)
+    {
+        if(code == KeyEvent.VK_W)
+        {
+            upPressed = true;
+        }
+        if(code == KeyEvent.VK_S)
+        {
+            downPressed = true;
+        }
+        if(code == KeyEvent.VK_A)
+        {
+            leftPressed = true;
+        }
+        if(code == KeyEvent.VK_D)
+        {
+            rightPressed = true;
+        }
+    }
+    private  void PauseGamme(int code)
+    {
+        if(code == KeyEvent.VK_ESCAPE)
+        {
+            if(gp.gameState == gp.playState)
+            {
+                gp.gameState = gp.pauseState;
+                System.out.println("GAME PAUSED");
+            }
+            else if(gp.gameState == gp.pauseState)
+            {
+                gp.gameState = gp.playState;
+                System.out.println("GAME CONTINUED");
+            }
+        }
+    }
+    private  void CharacterStats(int code)
+    {
+        if(code == KeyEvent.VK_C)
+        {
+            if(gp.gameState == gp.playState)
+            {
+                System.out.println("SHOW STATS");
+                gp.gameState = gp.characterState;
+            }
+            else if(gp.gameState == gp.characterState)
+            {
+                gp.gameState = gp.playState;
+                System.out.println("GAME CONTINUED");
+            }
+        }
+    }
+    private  void BasicAttack(int code)
+    {
+        if(code == KeyEvent.VK_Q)
+        {
+            System.out.println("USED A SKILL");
+        }
+    }
+    private  void SaySomething(int code)
+    {
+        if(code == KeyEvent.VK_E)
+        {
+            if(gp.gameState == gp.playState)
+            {
+                gp.gameState = gp.dialougeState;
+            }
+            else if (gp.gameState == gp.dialougeState)
+            {
+                gp.gameState = gp.playState;
+            }
+        }
+    }
+
+
+    // METHOD OVERLOADING SANA BUT WE CAN JUST SPLIT MGA MESSAGES WITH \n
+    private void sayMessage(String line1, String line2, String line3)
+    {
+
+    }
+    private void sayMessage(String line1, String line2)
+    {
+
+    }
+    private void sayMessage(String line1)
+    {
+
+    }
+
 }

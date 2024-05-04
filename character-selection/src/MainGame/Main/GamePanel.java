@@ -44,6 +44,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public  final int playState = 0;
     public  final int pauseState = 1;
     public  final  int characterState = 2;
+    public  final int dialougeState = 3;
 
     // JPanel for holding Swing components
     public  GamePanel()

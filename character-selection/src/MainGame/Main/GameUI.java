@@ -101,12 +101,41 @@ public class GameUI extends GameFrame{
         {
             // eto nagpapakita ng character stats
             drawCharacterScreen();
+            drawLoreScreen();
         }
+        if(gp.gameState == gp.dialougeState)
+        {
+            // PWEDENG LAGYAN NG ARRAYS PARA IBA IBA MESSAGE
+            drawDialouge("“This is the magic item that suppresses my mighty magical \n powers.  " +
+                    "If I were ever to take this off, a great catastrophe \n would surely befall this world…  " +
+                    "Well, that was a lie.\n I just wear it for looks.”", 18, 30);
+        }
+    }
+    public  void drawLoreScreen()
+    {
+        // CREATE A FRAME
+        final int frameX = gp.tileSize * 7;
+        final  int frameY = gp.tileSize;
+        final int frameWidth = gp.tileSize * 8;
+        final int frameHeight = gp.tileSize * 10;
+
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        // TEXTS
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(30F));
+
+        // Adjust the textX to center the lore text
+        int textX = frameX + 150;
+        int textY = frameY + gp.tileSize;
+
+        // LORE
+        g2.drawString("LORE", textX, textY);
     }
     public  void drawCharacterScreen()
     {
         // CREATE A FRAME
-        final int frameX = gp.tileSize * 2;
+        final int frameX = gp.tileSize * 1;
         final  int frameY = gp.tileSize;
         final int frameWidth = gp.tileSize * 5;
         final int frameHeight = gp.tileSize * 10;
@@ -191,24 +220,44 @@ public class GameUI extends GameFrame{
         g2.drawRoundRect(x+5, y+5, width - 10, height - 10, 25,25);
     }
     public void drawPauseScreen() {
-        // Draw a black background with 50% transparency
-        g2.setColor(new Color(0, 0, 0, 128)); // Black with 50% transparency
-        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        // CREATE A FRAME
+        Color c = new Color(0,0,0, 210);
+        g2.setColor(c);
+        g2.fillRoundRect(-50,-50, gp.getWidth() + 100, gp.getHeight() + 100, 35,35);
 
-        // Set the color of the "PAUSED" text to white
-        g2.setColor(Color.WHITE);
+        // TEXTS
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(30F));
 
-        // Draw the "PAUSED" text at the desired position
+        // TEXT
         String text = "PAUSED";
         int x = getXforCenteredText(text);
         int y = (gp.screenHeight - pauseMenu.getHeight()) / 4;
         g2.drawString(text, x, y);
-
-        // Make the pause menu panel visible
-        pauseMenu.setVisible(true);
     }
 
+    public  void drawDialouge(String message, float fontSize, int lineHeightDistance)
+    {
+            // CREATE A FRAME
+             int frameX = gp.tileSize * 2;
+              int frameY = gp.tileSize / 2;
+            final int frameWidth = gp.screenWidth -(gp.tileSize * 4);
+            final int frameHeight = gp.tileSize * 4;
 
+            drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+            // TEXTS
+            g2.setColor(Color.white);
+            g2.setFont(g2.getFont().deriveFont(fontSize));
+
+           frameX += gp.tileSize;
+           frameY += gp.tileSize;
+           for(String line : message.split("\n"))
+           {
+               g2.drawString(line, frameX, frameY);
+               frameY += lineHeightDistance;
+           }
+    }
 
     public int getXforCenteredText(String text) {
         int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
