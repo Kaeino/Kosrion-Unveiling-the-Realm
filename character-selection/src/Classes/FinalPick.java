@@ -17,6 +17,7 @@ interface StatMethods{
     public int getStamina();
     public ImageIcon getImg();
     public String getName();
+    public ImageIcon getImg2();
 
 }
 
@@ -34,12 +35,12 @@ public abstract class FinalPick implements StatMethods{
     private int Charisma;
     private int Stamina;
     private ImageIcon subClassImg;
+    private ImageIcon subClassImg2;
     private String Name;
     
-    public void setCharacterStats(int hp, int mp, String lore, int strength, int intelligence, int magicControl, int speed, int luck, int agility, int charisma, int stamina, ImageIcon subclassimg, String name){
+    public void setCharacterStatsInt(int hp, int mp, int strength, int intelligence, int magicControl, int speed, int luck, int agility, int charisma, int stamina){
         this.HP = hp;
         this.MP = mp;
-        this.Lore = lore;
         this.Strength = strength;
         this.Intelligence = intelligence;
         this.MagicControl = magicControl;
@@ -48,9 +49,17 @@ public abstract class FinalPick implements StatMethods{
         this.Agility = agility;
         this.Charisma = charisma;
         this.Stamina = stamina;
-        this.subClassImg = subclassimg;
-        this.Name = name;
         }
+
+    public void setCharacterStatsStr(String lore, String name){
+        this.Lore = lore;
+        this.Name = name;
+    }
+
+    public void setCharacterStatsImg(ImageIcon subclassimg, ImageIcon subclassimg2){
+        this.subClassImg = subclassimg;
+        this.subClassImg2 = subclassimg2;
+    }
 
     @Override
     public int getHP(){
@@ -99,6 +108,10 @@ public abstract class FinalPick implements StatMethods{
     @Override
     public ImageIcon getImg(){
         return subClassImg;
+    }
+    @Override
+    public ImageIcon getImg2(){
+        return subClassImg2;
     }
     @Override
     public String getName(){

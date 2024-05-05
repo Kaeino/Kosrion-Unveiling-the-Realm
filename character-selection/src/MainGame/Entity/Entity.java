@@ -7,7 +7,7 @@ import mainselection.MainSelection;
 
 public class Entity{
 
-    public  int worldX, worldY;
+    public  int worldX, worldY, facing;
     public  int x,y;
     public  int speed;
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
@@ -31,4 +31,5 @@ public class Entity{
     public int Charisma;
     public int Stamina;
     public Image subClassImg;
+    public Image subClassImg2;
 }

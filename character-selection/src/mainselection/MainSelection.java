@@ -309,6 +309,7 @@ void MakeSoundClick(){
 // Sets the stats to show in the subclass panel
   public void SetupClassStats(){
     MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick);
+    
     vars.subClassImg = mid.getImg();
     vars.HP = mid.getHP();
     vars.MP = mid.getMP();
