@@ -19,12 +19,15 @@ public class Entity{
 
     // CHARACTER ATTRIBUTES
     public  String name;
-    public String Lore;
-    public int HP;  // IDK what other stats are
+    public int HP;
     public int MP;
-    public  int strength;
-    public  int attack;
-    public  int defense;
-    public  int agility;
-
+    public String Lore;
+    public int Strength;
+    public int Intelligence;
+    public int MagicControl;
+    public int Speed;
+    public int Luck;
+    public int Agility;
+    public int Charisma;
+    public int Stamina;
 }

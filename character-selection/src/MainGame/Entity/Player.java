@@ -44,14 +44,19 @@ public class Player extends Entity
 
         MiddleMan mid = new MiddleMan(main, sub); // This object is ung sa class that sets the character's Stats (Under Classes Package)
 
-                // Player status [ETO DAPAT PALITAN PAG NEED NA INTEGRATE VALUES CODE NI PSALM]
+                // Player status [ETO DAPAT PALITAN PAG NEED NA INTEGRATE VALUES CODE NI PSALM] (Done!)
                 name    = "SON GOKU";
                 HP = mid.getHP(); //Methods from Final Pick class (Also under Classes Package)
                 MP = mid.getMP();
-                strength = 9999;
-                attack = 9999;
-                defense = 900;
-                agility = 300;
+                Strength = mid.getStrength();
+                Intelligence = mid.getIntelligence();
+                MagicControl = mid.getMagicControl();
+                Speed = mid.getSpeed();
+                Luck = mid.getLuck();
+                Agility = mid.getAgility();
+                Charisma = mid.getCharisma();
+                Stamina = mid.getStamina();
+
 
     }
     public void setDefaultValues() {

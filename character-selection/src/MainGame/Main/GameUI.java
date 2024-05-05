@@ -159,11 +159,19 @@ public class GameUI extends GameFrame{
         textY += lineHeight;
         g2.drawString("STRENGTH", textX, textY);
         textY += lineHeight;
-        g2.drawString("ATTACK", textX, textY);
+        g2.drawString("INTELLIGENCE", textX, textY);
         textY += lineHeight;
-        g2.drawString("DEFENSE", textX, textY);
+        g2.drawString("MAGIC CONT", textX, textY);
+        textY += lineHeight;
+        g2.drawString("SPEED", textX, textY);
+        textY += lineHeight;
+        g2.drawString("LUCK", textX, textY);
         textY += lineHeight;
         g2.drawString("AGILITY", textX, textY);
+        textY += lineHeight;
+        g2.drawString("CHARISMA", textX, textY);
+        textY += lineHeight;
+        g2.drawString("STAMINA", textX, textY);
         textY += lineHeight;
 
         // VALUES
@@ -188,22 +196,42 @@ public class GameUI extends GameFrame{
         g2.drawString(value, textX, textY);
         textY += lineHeight;
 
-        value = String.valueOf(gp.player.strength);
+        value = String.valueOf(gp.player.Strength);
         textX = getXforAlgignToRightText(value, tailX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
 
-        value = String.valueOf(gp.player.attack);
+        value = String.valueOf(gp.player.Intelligence);
         textX = getXforAlgignToRightText(value, tailX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
 
-        value = String.valueOf(gp.player.defense);
+        value = String.valueOf(gp.player.MagicControl);
         textX = getXforAlgignToRightText(value, tailX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
 
-        value = String.valueOf(gp.player.agility);
+        value = String.valueOf(gp.player.Speed);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.Luck);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.Agility);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.Charisma);
+        textX = getXforAlgignToRightText(value, tailX);
+        g2.drawString(value, textX, textY);
+        textY += lineHeight;
+
+        value = String.valueOf(gp.player.Stamina);
         textX = getXforAlgignToRightText(value, tailX);
         g2.drawString(value, textX, textY);
         textY += lineHeight;
