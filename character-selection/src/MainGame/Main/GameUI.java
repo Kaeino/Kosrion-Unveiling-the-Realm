@@ -125,12 +125,18 @@ public class GameUI extends GameFrame{
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(30F));
 
-        // Adjust the textX to center the lore text
+        // Adjust the x values to center the lore text and class image
         int textX = frameX + 150;
         int textY = frameY + gp.tileSize;
+        int imageX = frameX+ 75;
+        int imageY = frameY + gp.tileSize + 20;
+        int loreX = imageX - 10;
+        int loreY = textY* 2 +gp.player.imageHeight;
 
         // LORE
         g2.drawString("LORE", textX, textY);
+        g2.drawImage(gp.player.subClassImg, imageX, imageY, null);
+        g2.drawString(gp.player.Lore, loreX, loreY);
     }
     public  void drawCharacterScreen()
     {
@@ -157,21 +163,21 @@ public class GameUI extends GameFrame{
         textY += lineHeight;
         g2.drawString("MP", textX, textY);
         textY += lineHeight;
-        g2.drawString("STRENGTH", textX, textY);
+        g2.drawString("STR", textX, textY);
         textY += lineHeight;
-        g2.drawString("INTELLIGENCE", textX, textY);
+        g2.drawString("INT", textX, textY);
         textY += lineHeight;
-        g2.drawString("MAGIC CONT", textX, textY);
+        g2.drawString("MGC CNT", textX, textY);
         textY += lineHeight;
-        g2.drawString("SPEED", textX, textY);
+        g2.drawString("SPD", textX, textY);
         textY += lineHeight;
         g2.drawString("LUCK", textX, textY);
         textY += lineHeight;
-        g2.drawString("AGILITY", textX, textY);
+        g2.drawString("AGL", textX, textY);
         textY += lineHeight;
-        g2.drawString("CHARISMA", textX, textY);
+        g2.drawString("CHR", textX, textY);
         textY += lineHeight;
-        g2.drawString("STAMINA", textX, textY);
+        g2.drawString("STM", textX, textY);
         textY += lineHeight;
 
         // VALUES

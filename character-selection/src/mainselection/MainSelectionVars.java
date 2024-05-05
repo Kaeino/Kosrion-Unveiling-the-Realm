@@ -39,4 +39,12 @@ JLabel img = new JLabel(subClassImg);
      int HP;
      int MP;
      String Lore;
-}
+     int Strength;
+     int Intelligence;
+     int MagicControl;
+     int Speed;
+     int Luck;
+     int Agility;
+     int Charisma;
+     int Stamina;
+ }

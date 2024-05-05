@@ -21,6 +21,8 @@ public class Player extends Entity
 
     public  final int screenX;
     public  final  int screenY;
+    public  final int ImageWidth = 220;
+    public  final int imageHeight = 200;
 
     public Player(GamePanel gp, KeyHandler keyH) {
         this.gp = gp;
@@ -45,7 +47,7 @@ public class Player extends Entity
         MiddleMan mid = new MiddleMan(main, sub); // This object is ung sa class that sets the character's Stats (Under Classes Package)
 
                 // Player status [ETO DAPAT PALITAN PAG NEED NA INTEGRATE VALUES CODE NI PSALM] (Done!)
-                name    = "SON GOKU";
+                name    = mid.getName();
                 HP = mid.getHP(); //Methods from Final Pick class (Also under Classes Package)
                 MP = mid.getMP();
                 Strength = mid.getStrength();
@@ -56,6 +58,9 @@ public class Player extends Entity
                 Agility = mid.getAgility();
                 Charisma = mid.getCharisma();
                 Stamina = mid.getStamina();
+                Lore = mid.getLore();
+                subClassImg = mid.getImg().getImage(); // Converts ImageIcon to Image so that we can use it for g2.draw (Di pwede ImageIcon)
+                subClassImg = subClassImg.getScaledInstance(ImageWidth, imageHeight, Image.SCALE_DEFAULT); // Changes Size of image for Character Panel
 
 
     }

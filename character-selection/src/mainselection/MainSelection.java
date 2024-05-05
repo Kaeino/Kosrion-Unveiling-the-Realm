@@ -132,7 +132,8 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
                     vars.MainClassPick = i;          
                     vars.SwitchSubPanels = true;      
                     vars.backPanel = false;
-                    SwitchSubClass();             
+                    SetupClassStats();
+                    SetupClassDesc();           
                } 
          }
 
@@ -159,11 +160,9 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
             if(e.getSource() == vars.btnSwitchSub[j]){
 
-                switch (j) {
-                    case 0: vars.SubClassPick = 0; break;
-                    case 1: vars.SubClassPick = 1; break;
-                }
-                SwitchSubClass();
+                vars.SubClassPick = j;
+                SetupClassStats();
+                SetupClassDesc();
 
             }  
       }
@@ -204,55 +203,6 @@ void MakeSoundClick(){
        e1.printStackTrace();
    }
    }
-///////////////////////////////////////////////////////////////////
-// method that picks the which subclass will show up in the subclass panel
-
-void SwitchSubClass(){
-    if(vars.MainClassPick == 0){
-        if(vars.SubClassPick == 0){
-            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Rogue.gif");
-            vars.img.setIcon(vars.subClassImg);
-        }
-        else{
-            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Hero.gif");
-            vars.img.setIcon(vars.subClassImg);
-        }
-    }
-    else if(vars.MainClassPick == 1){
-        if(vars.SubClassPick == 0){
-            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/HighElf.gif");
-            vars.img.setIcon(vars.subClassImg);
-        }
-        else{
-            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/DarkElf.gif");
-            vars.img.setIcon(vars.subClassImg);
-        }
-    }
-    else if(vars.MainClassPick == 2){
-        if(vars.SubClassPick == 0){
-            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Youkai.gif");
-            vars.img.setIcon(vars.subClassImg);
-        }
-        else{
-            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/ArchDemon.gif");
-            vars.img.setIcon(vars.subClassImg);
-        }
-    }
-    else if(vars.MainClassPick == 3){
-        if(vars.SubClassPick == 0){
-            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Warrior.gif");
-            vars.img.setIcon(vars.subClassImg);
-        }
-        else{
-            vars.subClassImg = new ImageIcon("character-selection/src/res/sprites/Weaponsmith.gif");
-            vars.img.setIcon(vars.subClassImg);
-        }
-    }
-        // Calls the Setup stats and setup Description so that the text changes when you pick a differnt class/subclass
-        SetupClassStats();
-        SetupClassDesc();
-}
-
 ///////////////////////////////////////////////////////////////////
 // set ups the main class panel, buttons, icons, etc
    void MainClassPanelSetup(){
@@ -359,9 +309,11 @@ void SwitchSubClass(){
 // Sets the stats to show in the subclass panel
   public void SetupClassStats(){
     MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick);
+    vars.subClassImg = mid.getImg();
     vars.HP = mid.getHP();
     vars.MP = mid.getMP();
     vars.Lore = mid.getLore();
+    vars.img.setIcon(vars.subClassImg);
    }
 }	
 

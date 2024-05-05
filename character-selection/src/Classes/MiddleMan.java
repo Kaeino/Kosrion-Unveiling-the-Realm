@@ -1,6 +1,7 @@
 package Classes;
 
 import javax.management.loading.PrivateClassLoader;
+import javax.swing.ImageIcon;
 
 public class MiddleMan extends FinalPick {
     private int HP; // IDK what other stats are
@@ -15,6 +16,8 @@ public class MiddleMan extends FinalPick {
     private int Stamina;
     private String Lore;
     private int subClass;
+    private ImageIcon subClassImg;
+    private String Name;
 
    public MiddleMan(int mainclass, int subclass){
 
@@ -25,7 +28,8 @@ public class MiddleMan extends FinalPick {
             case 0:
             switch (subClass) {
                 case 1:
-    
+                    Name = "Hero";
+                    subClassImg = new ImageIcon("character-selection/src/res/sprites/Hero.gif");
                     HP = 1500;
                     MP = 800;
                     Strength = 1800;
@@ -40,7 +44,8 @@ public class MiddleMan extends FinalPick {
     
                     break;
                 case 0: 
-    
+                    Name = "Rouge";
+                    subClassImg = new ImageIcon("character-selection/src/res/sprites/Rogue.gif");
                     HP = 1300;
                     MP = 800;
                     Strength = 1200;
@@ -59,7 +64,8 @@ public class MiddleMan extends FinalPick {
             case 1:
             switch (subClass) {
                 case 0:
-    
+                    Name = "High Guy";
+                    subClassImg = new ImageIcon("character-selection/src/res/sprites/HighElf.gif");
                     HP = 1000;
                     MP = 1500;
                     Strength = 500;
@@ -74,7 +80,8 @@ public class MiddleMan extends FinalPick {
     
                     break;
                 case 1: 
-    
+                    Name = "Black Guy";
+                    subClassImg = new ImageIcon("character-selection/src/res/sprites/DarkElf.gif");
                     HP = 1200;
                     MP = 1300;
                     Strength = 800;
@@ -93,7 +100,8 @@ public class MiddleMan extends FinalPick {
             case 2:
             switch (subClass) {
                 case 0:
-    
+                    Name = "Youkai Watch";
+                    subClassImg = new ImageIcon("character-selection/src/res/sprites/Youkai.gif");
                     HP = 2000;
                     MP = 1100;
                     Strength = 500;
@@ -108,7 +116,8 @@ public class MiddleMan extends FinalPick {
     
                     break;
                 case 1: 
-    
+                    Name = "Death Scythe";
+                    subClassImg = new ImageIcon("character-selection/src/res/sprites/ArchDemon.gif");
                     HP = 2500;
                     MP = 1000;
                     Strength = 2000;
@@ -128,7 +137,8 @@ public class MiddleMan extends FinalPick {
             case 3:
             switch (subClass) {
                 case 0:
-    
+                    Name = "War Guy";
+                    subClassImg = new ImageIcon("character-selection/src/res/sprites/Warrior.gif");
                     HP = 4000;
                     MP = 0  ;
                     Strength = 4000;
@@ -143,7 +153,8 @@ public class MiddleMan extends FinalPick {
     
                     break;
                 case 1: 
-    
+                    Name = "Hephaestus";
+                    subClassImg = new ImageIcon("character-selection/src/res/sprites/Weaponsmith.gif");
                     HP = 3000;
                     MP = 1000;
                     Strength = 1800;
@@ -161,7 +172,7 @@ public class MiddleMan extends FinalPick {
             break;    
         }
 
-        super.setCharacterStats(HP, MP, Lore, Strength, Intelligence, MagicControl, Speed, Luck, Agility, Charisma, Stamina);
+        super.setCharacterStats(HP, MP, Lore, Strength, Intelligence, MagicControl, Speed, Luck, Agility, Charisma, Stamina, subClassImg, Name);
 
     }
 

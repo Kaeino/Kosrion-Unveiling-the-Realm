@@ -2,7 +2,7 @@ package MainGame.Entity;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-
+import javax.swing.ImageIcon;
 import mainselection.MainSelection;
 
 public class Entity{
@@ -30,4 +30,5 @@ public class Entity{
     public int Agility;
     public int Charisma;
     public int Stamina;
+    public Image subClassImg;
 }

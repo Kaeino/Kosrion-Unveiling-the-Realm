@@ -1,8 +1,9 @@
 package Classes;
 
+import javax.swing.ImageIcon;
+
 interface StatMethods{
 
-    public void setCharacterStats(int hp, int mp, String lore, int strength, int intelligence, int magicControl, int speed, int luck, int agility, int charisma, int stamina);
     public int getHP();
     public int getMP();
     public String getLore();
@@ -14,10 +15,12 @@ interface StatMethods{
     public int getAgility();
     public int getCharisma();
     public int getStamina();
+    public ImageIcon getImg();
+    public String getName();
 
 }
 
-public class FinalPick implements StatMethods{
+public abstract class FinalPick implements StatMethods{
     
     private int HP;
     private int MP;
@@ -30,9 +33,10 @@ public class FinalPick implements StatMethods{
     private int Agility;
     private int Charisma;
     private int Stamina;
+    private ImageIcon subClassImg;
+    private String Name;
     
-    @Override
-    public void setCharacterStats(int hp, int mp, String lore, int strength, int intelligence, int magicControl, int speed, int luck, int agility, int charisma, int stamina){
+    public void setCharacterStats(int hp, int mp, String lore, int strength, int intelligence, int magicControl, int speed, int luck, int agility, int charisma, int stamina, ImageIcon subclassimg, String name){
         this.HP = hp;
         this.MP = mp;
         this.Lore = lore;
@@ -44,6 +48,8 @@ public class FinalPick implements StatMethods{
         this.Agility = agility;
         this.Charisma = charisma;
         this.Stamina = stamina;
+        this.subClassImg = subclassimg;
+        this.Name = name;
         }
 
     @Override
@@ -90,5 +96,12 @@ public class FinalPick implements StatMethods{
     public int getStamina(){
         return Stamina;
     }
-
+    @Override
+    public ImageIcon getImg(){
+        return subClassImg;
+    }
+    @Override
+    public String getName(){
+        return Name;
+    }
 }
