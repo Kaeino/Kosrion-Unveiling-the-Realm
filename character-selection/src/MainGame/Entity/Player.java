@@ -61,6 +61,7 @@ public class Player extends Entity
                 Lore = mid.getLore();
                 subClassImg = mid.getImg().getImage(); // Converts ImageIcon to Image so that we can use it for g2.draw (Di pwede ImageIcon)
                 subClassImg = subClassImg.getScaledInstance(ImageWidth, imageHeight, Image.SCALE_DEFAULT); // Changes Size of image for Character Panel
+                subClassImg2 = mid.getImg2().getImage();
 
 
     }
@@ -118,9 +119,11 @@ public class Player extends Entity
                         break;
                     case "left":
                         worldX -= speed;
+                        facing = 1  ;
                         break;
                     case "right":
                         worldX += speed;
+                        facing = 0;
                         break;
 
                 }
@@ -130,18 +133,18 @@ public class Player extends Entity
             // REMEMBER THAT UPDATE 1 FRAMES EVERY 0.16 SECONDS. NOW THIS IS CALLED 10 FRAMES EVERY 1 SECONDS SO IT'S GOING TO
             // TURN 1 / 2 / 1 / 2 EVERY 10 FRAMES
 
-            spriteCounter++;
-            if (spriteCounter > 10) {
-                if (spriteNum == 1) {
-                    spriteNum = 2;
-                    System.out.println(1);
+            // spriteCounter++;
+            // if (spriteCounter > 10) {
+            //     if (spriteNum == 1) {
+            //         spriteNum = 2;
+            //         System.out.println(1);
 
-                } else if (spriteNum == 2) {
-                    spriteNum = 1;
-                    System.out.println(2);
-                }
-                spriteCounter = 0;
-            }
+            //     } else if (spriteNum == 2) {
+            //         spriteNum = 1;
+            //         System.out.println(2);
+            //     }
+            //     spriteCounter = 0;
+            // }
         }
     }
 
@@ -149,52 +152,18 @@ public class Player extends Entity
     public  void draw(Graphics g2)
     {
 
-        BufferedImage image = null;
+        Image image = subClassImg;
 
-        switch (direction)
+        switch (facing)
         {
-            case "up":
-                if(spriteNum == 1)
-                {
-                    image = up1;
-                }
-                if(spriteNum == 2)
-                {
-                    image = up2;
-                }
-                break;
-            case "down":
-                if(spriteNum == 1)
-                {
-                    image = down1;
-                }
-                if(spriteNum == 2)
-                {
-                    image = down2;
-                }
-                break;
-            case "left":
-                if(spriteNum == 1)
-                {
-                    image = left1;
-                }
-                if(spriteNum == 2)
-                {
-                    image = left2;
-                }
-                break;
-            case "right":
-                if(spriteNum == 1)
-                {
-                    image = right1;
-                }
-                if(spriteNum == 2)
-                {
-                    image = right2;
-                }
-                break;
+           case 0:
+                 image = subClassImg;
+           break;
+           case 1:
+                 image = subClassImg2;
+           break;
         }
-        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.CharacterTileSize, gp.CharacterTileSize, null);
 
 
        /* g2.setColor(Color.white);
