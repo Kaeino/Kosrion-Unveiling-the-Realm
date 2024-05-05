@@ -58,7 +58,41 @@ public  void loadMap()
     }
 }
     public void getTileImage() {
+
         try {
+            // WATERS
+
+            tile[0] = new Tile();
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/TilesV2/Water/tile320.png"));
+
+            tile[1]  = new Tile();
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Tiles/wall.png"));
+            tile[1].collision = true;
+
+            tile[2]  = new Tile();
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Tiles/water.png"));
+            tile[2].collision = true;
+
+            tile[3]  = new Tile();
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Tiles/earth.png"));
+
+            tile[4]  = new Tile();
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Tiles/tree.png"));
+            tile[4].collision = true;
+
+            tile[5]  = new Tile();
+            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Tiles/sand.png"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // PARA D MAWALA OLD VERSION
+    private  void loadOldMap()
+    {
+                try {
             tile[0]  = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/Tiles/grass.png"));
 
