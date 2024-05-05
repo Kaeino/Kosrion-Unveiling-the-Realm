@@ -35,5 +35,8 @@ JLabel img = new JLabel(subClassImg);
  int MainClassPick;
  int SubClassPick;
 
-
+    // CharacterStats
+     int HP;
+     int MP;
+     String Lore;
 }

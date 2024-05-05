@@ -20,11 +20,9 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
     MainClass main = new MainClass();
     public JPanel pnlSubClasses = new JPanel();
 
-    
-    public int HP;
-    public int MP;
-    public String Lore;
 
+///////////////////////////////////////////////////////////////////
+// Constructer, when called sets up the mainClass and subCLass panels
     public MainSelection(){
 
         MainClassPanelSetup();
@@ -40,6 +38,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 	}
 
 ///////////////////////////////////////////////////////////////////
+// delta timer (Source: RyiSnow)
     @Override
     public void run() {
 		double drawInterval = 1000000000/60;
@@ -72,6 +71,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 		}
 
 ///////////////////////////////////////////////////////////////////
+// moves from the mainmenu panel and the mainClass panel
  private void SwitchMainPanels(){
 
        if(vars.returnMenu == false){
@@ -100,6 +100,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
         }
    }
 ///////////////////////////////////////////////////////////////////
+// this method moves the mainClass and the subClass Panels sideways which creates the transitions
  private void SwitchSubPanels(){
 
     if(vars.panelMoveSubClasses > 0 && vars.backPanel == false){
@@ -122,6 +123,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
  }
 
 ///////////////////////////////////////////////////////////////////
+// this class is responsible for the action that happens when you click which button
 @Override
  public void actionPerformed(ActionEvent e) {
             for( int i = 0; i<4; i++){
@@ -167,6 +169,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
       }
    }
 ///////////////////////////////////////////////////////////////////
+// makes sound when you click buttons
 void MakeSoundClick(){
 
     File file = new File("character-selection/src/res/Sounds/Retro UI Sounds/Accept/ui_accept_1.wav" );
@@ -184,6 +187,7 @@ void MakeSoundClick(){
    }
 }
 ///////////////////////////////////////////////////////////////////
+// makes sound when you hover over SOME buttons
    void MakeSoundHover(){
     
     File file = new File("character-selection/src/res/Sounds/Retro UI Sounds/Accept/ui_accept_4.wav" );
@@ -201,6 +205,7 @@ void MakeSoundClick(){
    }
    }
 ///////////////////////////////////////////////////////////////////
+// method that picks the which subclass will show up in the subclass panel
 
 void SwitchSubClass(){
     if(vars.MainClassPick == 0){
@@ -243,12 +248,13 @@ void SwitchSubClass(){
             vars.img.setIcon(vars.subClassImg);
         }
     }
-        
+        // Calls the Setup stats and setup Description so that the text changes when you pick a differnt class/subclass
         SetupClassStats();
         SetupClassDesc();
 }
 
 ///////////////////////////////////////////////////////////////////
+// set ups the main class panel, buttons, icons, etc
    void MainClassPanelSetup(){
 
     this.setSize(950,550);
@@ -290,6 +296,7 @@ void SwitchSubClass(){
 
 
 ///////////////////////////////////////////////////////////////////
+// setups the subpanel class components, smaller panels, buttons, etc
    void SubClassesPanelSetup(){
 
     pnlSubClasses.setBackground(new Color(255,255,255,0));
@@ -336,23 +343,25 @@ void SwitchSubClass(){
 }
 
 ///////////////////////////////////////////////////////////////////
+// Sets the location of the text of stats and descriptions
    void SetupClassDesc(){ 
 
     vars.stats.setFont(new Font("Calibri",Font.BOLD, 30));
     vars.lore.setFont(new Font("Calibri",Font.BOLD, 30));
-    vars.stats.setText("<html>Class Stats"+"<br>HP: "+HP +"<br>MP: "+ MP+"</html>");
-    vars.lore.setText("<html>Class Lore:"+"<br>"+Lore+"</html>");
+    vars.stats.setText("<html>Class Stats"+"<br>HP: "+vars.HP +"<br>MP: "+vars.MP+"</html>");
+    vars.lore.setText("<html>Class Lore:"+"<br>"+vars.Lore+"</html>");
 
     vars.pnlSmalls[1].add(vars.stats);
     vars.pnlSmalls[2].add(vars.lore);
 
    }
-
+///////////////////////////////////////////////////////////////////
+// Sets the stats to show in the subclass panel
   public void SetupClassStats(){
     MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick);
-    HP = mid.getHP();
-    MP = mid.getMP();
-    Lore = mid.getLore();
+    vars.HP = mid.getHP();
+    vars.MP = mid.getMP();
+    vars.Lore = mid.getLore();
    }
 }	
 
