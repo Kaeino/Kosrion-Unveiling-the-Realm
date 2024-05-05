@@ -61,7 +61,7 @@ public class Player extends Entity
                 Lore = mid.getLore();
                 subClassImg = mid.getImg().getImage(); // Converts ImageIcon to Image so that we can use it for g2.draw (Di pwede ImageIcon)
                 subClassImg = subClassImg.getScaledInstance(ImageWidth, imageHeight, Image.SCALE_DEFAULT); // Changes Size of image for Character Panel
-                subClassImg2 = mid.getImg2().getImage();
+                subClassImg2 = mid.getImg2().getImage(); // inverted image
 
 
     }
