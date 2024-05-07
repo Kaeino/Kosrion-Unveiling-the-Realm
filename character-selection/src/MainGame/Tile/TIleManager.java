@@ -27,7 +27,7 @@ public class TIleManager {
 
         // READ TILE DATA FILE
         InputStream is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapTileData1"); // Yung may collisions true false
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        BufferedReader br = new BufferedReader(new InputStreamReader(is)); // GG RESET CASE STUDY NA
         // repush test lang
 
 
