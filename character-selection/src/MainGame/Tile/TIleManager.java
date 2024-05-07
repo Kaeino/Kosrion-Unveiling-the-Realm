@@ -26,7 +26,7 @@ public class TIleManager {
         this.gp = gp;
 
         // READ TILE DATA FILE
-        InputStream is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapTileData1");
+        InputStream is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapTileData1"); // Yung may collisions true false
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         // repush test lang
 
@@ -52,7 +52,7 @@ public class TIleManager {
   //      getTileImage();
 
         // GET THE WORLD COL AND ROW
-        is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapProject1");
+        is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapProject1"); // yung may 0 0 0 1 1 2 3 4 1 1 1 numbers
         br = new BufferedReader(new InputStreamReader(is));
 
         try{
