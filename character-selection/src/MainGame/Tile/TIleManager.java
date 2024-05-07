@@ -28,6 +28,8 @@ public class TIleManager {
         // READ TILE DATA FILE
         InputStream is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapTileData1");
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        // repush test lang
+
 
         // GETTING TILE NAMES AND COLLISIONS INFO FROM THE FILE
         String line ;
