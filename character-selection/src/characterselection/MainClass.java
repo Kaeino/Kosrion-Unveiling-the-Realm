@@ -19,7 +19,7 @@ public class MainClass {
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 
 
-        // these four lines setup for the music but don't play it, music play command is in line 47 - 49
+        // these four lines setup for the music but don't play it, music play command is in line 57 - 58
         File file = new File("character-selection/src/res/Music/BGM.wav");
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
