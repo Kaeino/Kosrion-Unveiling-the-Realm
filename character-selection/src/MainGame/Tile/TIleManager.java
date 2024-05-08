@@ -26,7 +26,7 @@ public class TIleManager {
         this.gp = gp;
 
         // READ TILE DATA FILE
-        InputStream is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapTileData1"); // Yung may collisions true false
+        InputStream is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapTileData2"); // Yung may collisions true false
         BufferedReader br = new BufferedReader(new InputStreamReader(is)); // GG RESET CASE STUDY NA
         // repush test lang
 
@@ -52,7 +52,7 @@ public class TIleManager {
   //      getTileImage();
 
         // GET THE WORLD COL AND ROW
-        is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapProject1"); // yung may 0 0 0 1 1 2 3 4 1 1 1 numbers
+        is = getClass().getResourceAsStream("/res/MainGameResources/Maps/TIleEditorResources/mapProject2"); // yung may 0 0 0 1 1 2 3 4 1 1 1 numbers
         br = new BufferedReader(new InputStreamReader(is));
 
         try{
@@ -72,7 +72,7 @@ public class TIleManager {
         }
 
 
-        loadMap("/res/MainGameResources/Maps/TIleEditorResources/mapProject1", 0);
+        loadMap("/res/MainGameResources/Maps/TIleEditorResources/mapProject2", 0);
     }
     public void loadMap(String filePath,int map)
     {
@@ -138,7 +138,7 @@ public class TIleManager {
         try
         {
             tile[index] = new Tile();
-            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/TilesV2/UsingTiles/" + imageNamge));
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/res/MainGameResources/TilesV2/" + imageNamge));
             tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
             tile[index].collision = collision;
 
