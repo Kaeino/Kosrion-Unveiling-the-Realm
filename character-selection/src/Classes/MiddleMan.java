@@ -1,8 +1,5 @@
 package Classes;
 
-import java.awt.Image;
-
-import javax.management.loading.PrivateClassLoader;
 import javax.swing.ImageIcon;
 
 public class MiddleMan extends FinalPick {

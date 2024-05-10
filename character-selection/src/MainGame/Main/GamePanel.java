@@ -3,12 +3,7 @@ package MainGame.Main;
 import MainGame.Entity.Player;
 //import MainGame.Main.KeyHandler;
 import MainGame.Tile.TIleManager;
-import mainselection.MainSelection;
-
 import javax.swing.*;
-
-import Classes.MiddleMan;
-
 import java.awt.*;
 
 public class GamePanel extends JPanel implements  Runnable{

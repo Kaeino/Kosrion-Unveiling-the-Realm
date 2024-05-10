@@ -2,10 +2,6 @@ package MainGame.Main;
 
 import javax.swing.*;
 
-import MainGame.Entity.Entity;
-
-import java.awt.event.KeyEvent;
-
 public class GameFrame {
 
     public JFrame window = new JFrame();

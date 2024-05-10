@@ -2,15 +2,9 @@ package MainGame.Entity;
 
 import MainGame.Main.GamePanel;
 import MainGame.Main.KeyHandler;
-import mainselection.MainSelection;
-
-import com.sun.nio.sctp.AbstractNotificationHandler;
-
 import Classes.MiddleMan;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class Player extends Entity
