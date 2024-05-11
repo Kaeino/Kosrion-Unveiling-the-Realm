@@ -22,16 +22,19 @@ JLabel img = new JLabel(subClassImg);
 
  Thread thread;
 
+ // boolean for checking
  boolean SwitchSubPanels;
  boolean backPanel;
  boolean returnMenu;
 
+ // int variables 
  int buttonMoveClasses = 109;
  int panelMoveSelect = 950;
  int panelMoveMainMenu = 0;
  int panelMoveMainClasses = 0;
  int panelMoveSubClasses = 950;
  int panelSmallsGap = 307;
+ int panelMoveSpeed = 50;
  int MainClassPick;
  int SubClassPick;
 

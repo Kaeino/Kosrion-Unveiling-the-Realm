@@ -15,10 +15,10 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
     public JPanel pnlSubClasses = new JPanel();
 
     // Objects of Other Classess
-    MainSelectionVars vars = new MainSelectionVars();
-    characterselection.MainMenu menu = new MainMenu();
-    GameFrame game = new GameFrame();
-    MainClass main = new MainClass();
+    MainSelectionVars vars = new MainSelectionVars(); // gains access to the variables in the otherclass in the package
+    characterselection.MainMenu menu = new MainMenu();// gains access to the main menu panel
+    GameFrame game = new GameFrame(); // gains access to jersey code
+    MainClass main = new MainClass(); // gains access to jersey code
     
 
 
@@ -31,9 +31,10 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
         SubClassesPanelSetup();
         
     }
-
+    // Runs the delta timer below this method
     public void RunStart() {
 		vars.thread = new Thread(this);
+        //start method makes the run() method start
 		vars.thread.start();
 		
 	}
@@ -75,10 +76,11 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 // moves from the mainmenu panel and the mainClass panel
  private void SwitchMainPanels(){
 
+    // Moves the main menu and mainclass panel to the left 
        if(vars.returnMenu == false){
             if(vars.panelMoveSelect > 0 && vars.returnMenu == false){
-                vars.panelMoveSelect -= 50;
-                vars.panelMoveMainMenu -= 50;
+                vars.panelMoveSelect -= vars.panelMoveSpeed;
+                vars.panelMoveMainMenu -= vars.panelMoveSpeed;
                 characterselection.MainMenu.mainMenuPanel.setLocation(vars.panelMoveMainMenu,0);
                 this.setLocation(vars.panelMoveSelect,0);
             }
@@ -87,10 +89,11 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
                 System.out.println(vars.panelMoveSelect + "damnnn");
             }
        }
+       // does the opposite of the if statement above
        else{
             if(vars.returnMenu == true && vars.panelMoveSelect < 950){
-                vars.panelMoveSelect += 50;
-                vars.panelMoveMainMenu += 50;
+                vars.panelMoveSelect += vars.panelMoveSpeed;
+                vars.panelMoveMainMenu += vars.panelMoveSpeed;
                 characterselection.MainMenu.mainMenuPanel.setLocation(vars.panelMoveMainMenu,0);
                 this.setLocation(vars.panelMoveSelect,0);
             }
@@ -104,15 +107,17 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 // this method moves the mainClass and the subClass Panels sideways which creates the transitions
  private void SwitchSubPanels(){
 
+    // Moves the subpanels to the left
     if(vars.panelMoveSubClasses > 0 && vars.backPanel == false){
-        vars.panelMoveMainClasses -= 50;
-        vars.panelMoveSubClasses -= 50;
+        vars.panelMoveMainClasses -= vars.panelMoveSpeed;
+        vars.panelMoveSubClasses -= vars.panelMoveSpeed;
         this.setLocation(vars.panelMoveMainClasses, 0);
         pnlSubClasses.setLocation(vars.panelMoveSubClasses, 0);
     }
+    // opposite of the one at the top
     else if(vars.panelMoveSubClasses < 950 && vars.backPanel == true){
-        vars.panelMoveMainClasses += 50;
-        vars.panelMoveSubClasses += 50;
+        vars.panelMoveMainClasses += vars.panelMoveSpeed;
+        vars.panelMoveSubClasses += vars.panelMoveSpeed;
         this.setLocation(vars.panelMoveMainClasses, 0);
         pnlSubClasses.setLocation(vars.panelMoveSubClasses, 0);
     }
@@ -138,17 +143,20 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
                } 
          }
 
+         // button that returns you to the main menu panel from the mainclass panel
          if(e.getSource() == vars.btnBacktoMenu){
             MakeSoundClick();
             vars.returnMenu = true;
             SwitchMainPanels = true;
          }
 
+         // button that starts the game 
          if(e.getSource() == vars.btnStartGame){
            main.mainFrame.dispose();
            game.showGame(vars.MainClassPick, vars.SubClassPick); // Passing MainClassPick and SubClassPick to jersey's Code
          }
 
+         // button that returns you to the mainclass panel from the subclass panel
          if (e.getSource() == vars.btnBacktoMainClass){
 
             MakeSoundClick();
@@ -158,7 +166,8 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
          }
 
          for(int j = 0; j<2 ; j++){
-
+        
+        // Switches subclasses 
             if(e.getSource() == vars.btnSwitchSub[j]){
 
                 vars.SubClassPick = j;
@@ -297,6 +306,7 @@ void MakeSoundClick(){
 // Sets the location of the text of stats and descriptions
    void SetupClassDesc(){ 
 
+    // sets text for the subclass panel to display the stats and images for each subclass;
     vars.stats.setFont(new Font("Calibri",Font.BOLD, 30));
     vars.lore.setFont(new Font("Calibri",Font.BOLD, 30));
     vars.stats.setText("<html>Class Stats"+"<br>HP: "+vars.HP +"<br>MP: "+vars.MP+"</html>");
@@ -309,12 +319,20 @@ void MakeSoundClick(){
 ///////////////////////////////////////////////////////////////////
 // Sets the stats to show in the subclass panel
   public void SetupClassStats(){
-    MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick);
+    MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick); // gaisn access to the stats methods from Classes Package
     
+    // sets the values of the character stats to be displayed in the subclasspanel;
     vars.subClassImg = mid.getImg();
     vars.HP = mid.getHP();
     vars.MP = mid.getMP();
     vars.Lore = mid.getLore();
+    vars.Strength = mid.getStrength();
+    vars.MagicControl = mid.getMagicControl();
+    vars.Speed = mid.getSpeed();
+    vars.Luck = mid.getLuck();
+    vars.Agility = mid.getAgility();
+    vars.Stamina = mid.getStamina();
+    vars.Charisma = mid.getCharisma();
     vars.img.setIcon(vars.subClassImg);
    }
 }	

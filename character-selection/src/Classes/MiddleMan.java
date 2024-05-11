@@ -22,10 +22,10 @@ public class MiddleMan extends FinalPick {
     private String Name;
 
    public MiddleMan(int mainclass, int subclass){
-
+        //Setter for Subclass variable to pick for subclass 
         this.subClass = subclass;
 
-
+    // nested switch case picks for main and subclass
     switch (mainclass) {
             case 0:
             switch (subClass) {

@@ -41,6 +41,7 @@ public abstract class FinalPick implements StatMethods{
     private String Name;
     
     public void setCharacterStatsInt(int hp, int mp, int strength, int intelligence, int magicControl, int speed, int luck, int agility, int charisma, int stamina){
+        //int Setters
         this.HP = hp;
         this.MP = mp;
         this.Strength = strength;
@@ -54,15 +55,18 @@ public abstract class FinalPick implements StatMethods{
         }
 
     public void setCharacterStatsStr(String lore, String name){
+        //String Setters
         this.Lore = lore;
         this.Name = name;
     }
 
     public void setCharacterStatsImg(ImageIcon subclassimg, ImageIcon subclassimg2){
+        //ImageIcon Setters
         this.subClassImg = subclassimg;
         this.subClassImg2 = subclassimg2;
     }
 
+    //Interface Implemented Methods
     @Override
     public int getHP(){
         return HP;
