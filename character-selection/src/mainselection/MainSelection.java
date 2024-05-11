@@ -12,11 +12,14 @@ import Classes.*;
 public class MainSelection extends JPanel implements Runnable, ActionListener{
 
     public boolean SwitchMainPanels = true;
+    public JPanel pnlSubClasses = new JPanel();
+
+    // Objects of Other Classess
     MainSelectionVars vars = new MainSelectionVars();
     characterselection.MainMenu menu = new MainMenu();
     GameFrame game = new GameFrame();
     MainClass main = new MainClass();
-    public JPanel pnlSubClasses = new JPanel();
+    
 
 
 ///////////////////////////////////////////////////////////////////

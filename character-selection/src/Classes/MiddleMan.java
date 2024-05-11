@@ -3,7 +3,9 @@ package Classes;
 import javax.swing.ImageIcon;
 
 public class MiddleMan extends FinalPick {
-    private int HP; // IDK what other stats are
+
+    //Character Stats
+    private int HP; 
     private int MP;
     private int Strength;
     private int Intelligence;
@@ -180,6 +182,8 @@ public class MiddleMan extends FinalPick {
             break;    
         }
 
+        // Methods in the FinalPick Class which pass the values of the stats for each Variable
+        // Separated by data type
         super.setCharacterStatsInt(HP, MP, Strength, Intelligence, MagicControl, Speed, Luck, Agility, Charisma, Stamina);
         super.setCharacterStatsStr(Lore, Name);
         super.setCharacterStatsImg(subClassImg, subClassImg2);

@@ -2,6 +2,7 @@ package Classes;
 
 import javax.swing.ImageIcon;
 
+// Interface for Stat Methods
 interface StatMethods{
 
     public int getHP();
@@ -21,8 +22,9 @@ interface StatMethods{
 
 }
 
+//Abstract Class which is extended by the MiddleMan Class and implements the interface above
 public abstract class FinalPick implements StatMethods{
-    
+    //Character Stats
     private int HP;
     private int MP;
     private String Lore;
