@@ -306,7 +306,7 @@ void MakeSoundClick(){
 // Sets the location of the text of stats and descriptions
    void SetupClassDesc(){ 
 
-    // sets text for the subclass panel to display the stats and images for each subclass;
+    // sets text for the subclass panel to display the stats and images for each subclass
     vars.stats.setFont(new Font("Calibri",Font.BOLD, 30));
     vars.lore.setFont(new Font("Calibri",Font.BOLD, 30));
     vars.stats.setText("<html>Class Stats"+"<br>HP: "+vars.HP +"<br>MP: "+vars.MP+"</html>");
