@@ -42,6 +42,7 @@ public class MainMenu {
         mainMenuBg.add(mainMenuPanel);
         mainMenuBg.add(select);    
         mainMenuBg.add(select.pnlSubClasses);
+        mainMenuBg.add(select.pnlLoadChar);
 
         // Damn eto nmn label pang display ng Background Image
         JLabel backgroundLabel = new JLabel();
@@ -82,6 +83,26 @@ public class MainMenu {
         // Add the create character button to the button panel
         buttonPanel.add(createCharacterButton);
         
+
+        ImageIcon loadIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
+        JButton loadButton = new JButton(loadIcon);
+        loadButton.setFocusable(false);
+        loadButton.setPreferredSize(new Dimension(130, 47));
+        loadButton.setContentAreaFilled(false); // 
+        loadButton.setBorderPainted(false); // just removing the border, useless
+        loadButton.setOpaque(false); // Set button background to be transparent daw tae
+        loadButton.addActionListener(new ActionListener() {
+            @Override
+         public void actionPerformed(ActionEvent e) {
+             // this exits the program nmn if clicked
+             MakeSound();
+             select.RunStart();
+             select.SwitchMainPanels = true;
+             select.Load = true;
+            }
+        });
+
+        buttonPanel.add(loadButton);
 
         // whole code for exit button lang
         ImageIcon quitIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");

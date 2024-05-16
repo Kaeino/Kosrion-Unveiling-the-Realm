@@ -12,6 +12,7 @@ import Classes.*;
 public class MainSelection extends JPanel implements Runnable, ActionListener{
 
     public boolean SwitchMainPanels = true;
+    public boolean Load = false;
     public JPanel pnlSubClasses = new JPanel();
     public JPanel pnlLoadChar = new JPanel();
 
@@ -30,6 +31,8 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
         MainClassPanelSetup();
 
         SubClassesPanelSetup();
+
+        LoadCharPanelSetup();
         
     }
     // Runs the delta timer below this method
@@ -78,7 +81,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
  private void SwitchMainPanels(){
 
     // Moves the main menu and mainclass panel to the left 
-       if(vars.returnMenu == false){
+       if(vars.returnMenu == false && Load == false){
             if(vars.panelMoveSelect > 0 && vars.returnMenu == false){
                 vars.panelMoveSelect -= vars.panelMoveSpeed;
                 vars.panelMoveMainMenu -= vars.panelMoveSpeed;
@@ -89,6 +92,22 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
                 SwitchMainPanels = false;
                 System.out.println(vars.panelMoveSelect + "damnnn");
             }
+       }
+       else if(Load == true){
+
+        if(vars.loadPanelMove < 0 && vars.returnMenu == false){
+            vars.loadPanelMove += vars.panelMoveSpeed;
+            vars.panelMoveMainMenu += vars.panelMoveSpeed;
+            characterselection.MainMenu.mainMenuPanel.setLocation(vars.panelMoveMainMenu,0);
+            pnlLoadChar.setLocation(vars.loadPanelMove,0);
+            System.out.println(vars.loadPanelMove + "WERE HERE");
+        }
+        else{
+            SwitchMainPanels = false;
+            Load = false;
+            System.out.println(vars.panelMoveSelect + "WERE HERE");
+        }
+
        }
        // does the opposite of the if statement above
        else{
@@ -254,6 +273,44 @@ void MakeSoundClick(){
             });
         }
     }
+
+    ///////////////////////////////////////////////////////////////////
+// set ups the load character panel, buttons, icons, etc
+   void LoadCharPanelSetup(){
+
+    pnlLoadChar.setSize(950,550);
+    pnlLoadChar.setLocation(-950,0);
+    pnlLoadChar.setBackground(new Color(0,0,0,100));
+    pnlLoadChar.setLayout(null);
+
+    vars.buttonMoveClasses = 109;
+    for(int i = 0; i<4; i++){
+
+        vars.btnLoadChar[i] = new JButton();
+        vars.btnLoadChar[i].addActionListener(this);
+        vars.btnLoadChar[i].setSize(120,170);
+        vars.btnLoadChar[i].setLocation(vars.buttonMoveClasses,175);
+        vars.btnLoadChar[i].setFocusable(false);
+        
+        pnlLoadChar.add(vars.btnLoadChar[i]);
+        vars.buttonMoveClasses += 200;
+    }
+    vars.btnBacktoMenu2.setBounds(10,10,20,20);
+    vars.btnBacktoMenu2.addActionListener(this);
+    pnlLoadChar.add(vars.btnBacktoMenu2);
+
+
+    // Added hover sounds damnn
+    for (int i = 0; i < 4; i++) {
+        vars.btnMainClass[i].addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                MakeSoundHover();
+             }
+            });
+        }
+    }
+
 
 
 ///////////////////////////////////////////////////////////////////

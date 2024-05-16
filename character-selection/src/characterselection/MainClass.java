@@ -48,7 +48,7 @@ public class MainClass {
         mainFrame.setLocationRelativeTo(null);
 
         //damnn para visible yung frame sheesh
-   //     mainFrame.setVisible(true);
+        mainFrame.setVisible(true);
 
         // 2nd - then after splashscreen papakita nmn main menu
         MainMenu.show(mainFrame, "character-selection/src/res/game-background/background-2.gif");
@@ -59,8 +59,8 @@ public class MainClass {
 
 
         // Call this class on button click to show the game [MAKE SURE CLOSE THE MAIN FRAME DIN]
-          GameFrame game = new GameFrame();
-          game.showGame(0,1);
+          // GameFrame game = new GameFrame();
+          // game.showGame(0,1);
                 
     }
 }

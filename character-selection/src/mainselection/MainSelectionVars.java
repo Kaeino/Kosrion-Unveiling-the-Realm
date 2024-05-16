@@ -10,6 +10,7 @@ import javax.swing.*;
  JPanel[] pnlSmalls = new JPanel[3];
  JButton btnBacktoMainClass = new JButton();
  JButton btnBacktoMenu = new JButton();
+ JButton btnBacktoMenu2 = new JButton();
  JButton btnStartGame = new JButton();
  JLabel stats = new JLabel();
  JLabel lore = new JLabel();
@@ -37,6 +38,7 @@ JLabel img = new JLabel(subClassImg);
  int panelMoveSubClasses = 950;
  int panelSmallsGap = 307;
  int panelMoveSpeed = 50;
+ int loadPanelMove = -950;
  int MainClassPick;
  int SubClassPick;
 
