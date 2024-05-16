@@ -5,6 +5,7 @@ import javax.swing.*;
  class MainSelectionVars {
     
  JButton[] btnMainClass = new JButton[4];
+ JButton[] btnLoadChar = new JButton[4];
  JButton[] btnSwitchSub = new JButton[2];
  JPanel[] pnlSmalls = new JPanel[3];
  JButton btnBacktoMainClass = new JButton();
@@ -17,6 +18,7 @@ ImageIcon human = new ImageIcon("character-selection/src/res/sprites/Human.gif")
 ImageIcon elf = new ImageIcon("character-selection/src/res/sprites/Elf.gif");
 ImageIcon demon = new ImageIcon("character-selection/src/res/sprites/Demon.gif");
 ImageIcon dwarf = new ImageIcon("character-selection/src/res/sprites/Dwarf.gif");
+
 ImageIcon subClassImg;
 JLabel img = new JLabel(subClassImg);
 

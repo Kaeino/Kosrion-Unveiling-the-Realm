@@ -13,6 +13,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
     public boolean SwitchMainPanels = true;
     public JPanel pnlSubClasses = new JPanel();
+    public JPanel pnlLoadChar = new JPanel();
 
     // Objects of Other Classess
     MainSelectionVars vars = new MainSelectionVars(); // gains access to the variables in the otherclass in the package
