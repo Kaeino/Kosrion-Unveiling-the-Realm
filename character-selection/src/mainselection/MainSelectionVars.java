@@ -54,4 +54,15 @@ JLabel img = new JLabel(subClassImg);
      int Agility;
      int Charisma;
      int Stamina;
+
+     int j;
+     int p;
+     String saveCount;
+     String[] saveFile;
+     int[] loadArray = new int[8];
+     ImageIcon loadIcon;
+     int counter = 0;
+
+     StringBuilder CharacterSaves = new StringBuilder();
+ 
  }

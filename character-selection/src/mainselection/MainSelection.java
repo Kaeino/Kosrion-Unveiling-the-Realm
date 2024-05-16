@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.Scanner;
 
 import MainGame.Main.GameFrame;
 import characterselection.*;
@@ -90,25 +91,37 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             }
             else{
                 SwitchMainPanels = false;
-                System.out.println(vars.panelMoveSelect + "damnnn");
             }
        }
-       else if(Load == true){
+       else if(Load == true && vars.returnMenu == false){
 
         if(vars.loadPanelMove < 0 && vars.returnMenu == false){
             vars.loadPanelMove += vars.panelMoveSpeed;
             vars.panelMoveMainMenu += vars.panelMoveSpeed;
             characterselection.MainMenu.mainMenuPanel.setLocation(vars.panelMoveMainMenu,0);
             pnlLoadChar.setLocation(vars.loadPanelMove,0);
-            System.out.println(vars.loadPanelMove + "WERE HERE");
         }
         else{
             SwitchMainPanels = false;
             Load = false;
-            System.out.println(vars.panelMoveSelect + "WERE HERE");
         }
 
        }
+
+       else if(Load == true && vars.returnMenu == true){
+         if(vars.loadPanelMove > -950 && vars.returnMenu == true){
+            vars.loadPanelMove -= vars.panelMoveSpeed;
+            vars.panelMoveMainMenu -= vars.panelMoveSpeed;
+            characterselection.MainMenu.mainMenuPanel.setLocation(vars.panelMoveMainMenu,0);
+            pnlLoadChar.setLocation(vars.loadPanelMove,0);
+        }
+        else{
+            SwitchMainPanels = false;
+            Load = false;
+            vars.returnMenu = false;
+        }
+       }
+
        // does the opposite of the if statement above
        else{
             if(vars.returnMenu == true && vars.panelMoveSelect < 950){
@@ -163,6 +176,12 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
                } 
          }
 
+         for( int i = 0; i<4; i++){
+            if(e.getSource() == vars.btnLoadChar[i]){ ///////////////////////////////////////////////////////////////////////
+                    MakeSoundClick();        
+               } 
+         }
+
          // button that returns you to the main menu panel from the mainclass panel
          if(e.getSource() == vars.btnBacktoMenu){
             MakeSoundClick();
@@ -170,10 +189,22 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             SwitchMainPanels = true;
          }
 
+         if(e.getSource() == vars.btnBacktoMenu2){
+            MakeSoundClick();
+            vars.returnMenu = true;
+            SwitchMainPanels = true;
+            Load = true;
+         }
+
          // button that starts the game 
          if(e.getSource() == vars.btnStartGame){
            main.mainFrame.dispose();
            game.showGame(vars.MainClassPick, vars.SubClassPick); // Passing MainClassPick and SubClassPick to jersey's Code
+           try {
+            CharacterCreate();
+        } catch (IOException | LineUnavailableException e1) {
+            e1.printStackTrace();
+        }
          }
 
          // button that returns you to the mainclass panel from the subclass panel
@@ -277,7 +308,6 @@ void MakeSoundClick(){
     ///////////////////////////////////////////////////////////////////
 // set ups the load character panel, buttons, icons, etc
    void LoadCharPanelSetup(){
-
     pnlLoadChar.setSize(950,550);
     pnlLoadChar.setLocation(-950,0);
     pnlLoadChar.setBackground(new Color(0,0,0,100));
@@ -294,10 +324,20 @@ void MakeSoundClick(){
         
         pnlLoadChar.add(vars.btnLoadChar[i]);
         vars.buttonMoveClasses += 200;
+        
     }
     vars.btnBacktoMenu2.setBounds(10,10,20,20);
     vars.btnBacktoMenu2.addActionListener(this);
     pnlLoadChar.add(vars.btnBacktoMenu2);
+
+    
+    try {
+        CharacterLoad();
+    } catch (IOException e1) {
+        System.out.println("BE HUMBLE");
+    } catch (LineUnavailableException e1) {
+        System.out.println("SIT DOWN");
+    }
 
 
     // Added hover sounds damnn
@@ -393,5 +433,44 @@ void MakeSoundClick(){
     vars.Charisma = mid.getCharisma();
     vars.img.setIcon(vars.subClassImg);
    }
+
+   public void CharacterLoad() throws IOException, LineUnavailableException{
+
+    BufferedReader loadCharacter = new BufferedReader(new FileReader("character-selection/src/res/MainGameResources/LoadClass/Saves.txt"));
+
+    while((vars.saveCount = loadCharacter.readLine()) != null){
+
+        for(int x = 0; x < 2; x++){
+
+            vars.saveFile =vars. saveCount.split(" ");
+            
+            vars.loadArray[vars.j] = Integer.parseInt(vars.saveFile[x]); 
+            vars.j++;
+            
+        }
+
+        MiddleMan mid = new MiddleMan(vars.loadArray[vars.p], vars.loadArray[vars.p+1]);
+        vars.btnLoadChar[vars.counter].setIcon(mid.getImg());
+        vars.p+=2;
+        vars.counter++;
+        
+        }
+    }  
+
+    public void CharacterCreate() throws IOException, LineUnavailableException{
+
+        File saves = new File("character-selection/src/res/MainGameResources/LoadClass/Saves.txt");
+        Scanner sc = new Scanner(saves);
+
+        while(sc.hasNextLine()){
+        vars.CharacterSaves = vars.CharacterSaves.append(sc.nextLine()+"\n");
+        }
+        
+
+        BufferedWriter SaveCharacter = new BufferedWriter(new FileWriter("character-selection/src/res/MainGameResources/LoadClass/Saves.txt"));
+            SaveCharacter.write(vars.CharacterSaves.toString()+vars.MainClassPick+" "+vars.SubClassPick);
+            SaveCharacter.close();
+            System.out.println(vars.CharacterSaves.toString());
+        }  
 }	
 
