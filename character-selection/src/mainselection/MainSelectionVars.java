@@ -8,6 +8,7 @@ import javax.swing.*;
  JButton[] btnLoadChar = new JButton[4];
  JButton[] btnSwitchSub = new JButton[2];
  JPanel[] pnlSmalls = new JPanel[3];
+ JButton btnDeleteSave = new JButton();
  JButton btnBacktoMainClass = new JButton();
  JButton btnBacktoMenu = new JButton();
  JButton btnBacktoMenu2 = new JButton();
@@ -58,11 +59,15 @@ JLabel img = new JLabel(subClassImg);
      int j;
      int p;
      String saveCount;
-     String[] saveFile;
-     int[] loadArray = new int[8];
+     
+     Integer[] loadArray = new Integer[8];
      ImageIcon loadIcon;
      int counter = 0;
+     int deleteCounter;
+     int loadPick;
+     int IconCount = 3;
 
      StringBuilder CharacterSaves = new StringBuilder();
+     StringBuilder CharacterDelete = new StringBuilder();
  
  }

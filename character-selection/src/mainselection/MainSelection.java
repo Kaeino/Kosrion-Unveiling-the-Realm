@@ -177,8 +177,10 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
          }
 
          for( int i = 0; i<4; i++){
-            if(e.getSource() == vars.btnLoadChar[i]){ ///////////////////////////////////////////////////////////////////////
-                    MakeSoundClick();        
+            if(e.getSource() == vars.btnLoadChar[i]){ 
+                    vars.loadPick = i;
+                    MakeSoundClick();
+
                } 
          }
 
@@ -188,12 +190,23 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             vars.returnMenu = true;
             SwitchMainPanels = true;
          }
-
+         
+         // button that returns you to the main menu panel from the loadCharacter panel
          if(e.getSource() == vars.btnBacktoMenu2){
             MakeSoundClick();
             vars.returnMenu = true;
             SwitchMainPanels = true;
             Load = true;
+         }
+
+          // deletes saved character
+         if(e.getSource() == vars.btnDeleteSave){
+            MakeSoundClick();
+            try {
+                DeleteSaves(vars.loadPick);
+            } catch (IOException | LineUnavailableException e1) {
+                System.out.println("error");
+            }
          }
 
          // button that starts the game 
@@ -328,8 +341,12 @@ void MakeSoundClick(){
     }
     vars.btnBacktoMenu2.setBounds(10,10,20,20);
     vars.btnBacktoMenu2.addActionListener(this);
-    pnlLoadChar.add(vars.btnBacktoMenu2);
 
+    vars.btnDeleteSave.setBounds(10, 450, 20,20);
+    vars.btnDeleteSave.addActionListener(this);
+
+    pnlLoadChar.add(vars.btnBacktoMenu2);
+    pnlLoadChar.add(vars.btnDeleteSave);
     
     try {
         CharacterLoad();
@@ -438,22 +455,18 @@ void MakeSoundClick(){
 
     BufferedReader loadCharacter = new BufferedReader(new FileReader("character-selection/src/res/MainGameResources/LoadClass/Saves.txt"));
 
+    vars.j = 0;
+    vars.p = 0;
     while((vars.saveCount = loadCharacter.readLine()) != null){
-
+        
         for(int x = 0; x < 2; x++){
-
-            vars.saveFile =vars. saveCount.split(" ");
+            String[] saveFile = vars. saveCount.split(" ");
             
-            vars.loadArray[vars.j] = Integer.parseInt(vars.saveFile[x]); 
+            vars.loadArray[vars.j] = Integer.parseInt(saveFile[x]); 
             vars.j++;
             
-        }
-
-        MiddleMan mid = new MiddleMan(vars.loadArray[vars.p], vars.loadArray[vars.p+1]);
-        vars.btnLoadChar[vars.counter].setIcon(mid.getImg());
-        vars.p+=2;
-        vars.counter++;
-        
+            }      
+            LoadIcons();  
         }
     }  
 
@@ -463,14 +476,72 @@ void MakeSoundClick(){
         Scanner sc = new Scanner(saves);
 
         while(sc.hasNextLine()){
+            System.out.println("i am looping");
         vars.CharacterSaves = vars.CharacterSaves.append(sc.nextLine()+"\n");
         }
         
 
-        BufferedWriter SaveCharacter = new BufferedWriter(new FileWriter("character-selection/src/res/MainGameResources/LoadClass/Saves.txt"));
+            BufferedWriter SaveCharacter = new BufferedWriter(new FileWriter("character-selection/src/res/MainGameResources/LoadClass/Saves.txt"));
             SaveCharacter.write(vars.CharacterSaves.toString()+vars.MainClassPick+" "+vars.SubClassPick);
             SaveCharacter.close();
             System.out.println(vars.CharacterSaves.toString());
+            vars.IconCount+= 1;
         }  
+
+    public void DeleteSaves(int deleteChar) throws IOException, LineUnavailableException{
+
+        int c = 0;
+        vars.deleteCounter = 0;
+        vars.CharacterDelete.setLength(0);
+
+        if(deleteChar == 0){
+        } else if (deleteChar == 1){
+            deleteChar+=1;
+        }else if (deleteChar == 2){
+            deleteChar+=2;
+        }else if (deleteChar == 3){
+            deleteChar+=3;
+        }
+        
+        File saves = new File("character-selection/src/res/MainGameResources/LoadClass/Saves.txt");
+        Scanner sc = new Scanner(saves);
+
+        while(sc.hasNextLine()){
+        vars.CharacterSaves = vars.CharacterSaves.append(sc.nextLine()+"\n");
+        vars.deleteCounter++;
+        }
+       
+        for(int i = deleteChar; i < vars.deleteCounter+2; i ++){
+            vars.loadArray[i] =  vars.loadArray[i+2];
+        }
+
+        for (int j = 0; j < vars.deleteCounter-1; j++){
+            vars.CharacterDelete = vars.CharacterDelete.append(vars.loadArray[j+c].toString()+" "+ vars.loadArray[j+1+c].toString()+"\n");
+            c++;
+        }
+                 BufferedWriter SaveCharacter = new BufferedWriter(new FileWriter("character-selection/src/res/MainGameResources/LoadClass/Saves.txt"));
+                   SaveCharacter.write(vars.CharacterDelete.toString());
+                   SaveCharacter.close();
+
+                   vars.p = 0;
+                   vars.counter = 0;
+                   for (int p = 0; p < vars.deleteCounter-1; p++){
+                    
+                    LoadIcons();
+                    vars.btnLoadChar[vars.IconCount].setIcon(null);
+                    }
+                    if(vars.IconCount == 0){
+                        vars.btnLoadChar[0].setIcon(null);
+                    }
+                    vars.IconCount-= 1;
+                   
+    }  
+
+    public void LoadIcons(){
+        MiddleMan mid = new MiddleMan(vars.loadArray[vars.p], vars.loadArray[vars.p+1]);
+        vars.btnLoadChar[vars.counter].setIcon(mid.getImg());
+        vars.p+=2;
+        vars.counter++;
+    }
 }	
 
