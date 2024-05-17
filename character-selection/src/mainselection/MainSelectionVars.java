@@ -9,6 +9,7 @@ import javax.swing.*;
  JButton[] btnSwitchSub = new JButton[2];
  JPanel[] pnlSmalls = new JPanel[3];
  JButton btnDeleteSave = new JButton();
+ JButton btnPlayLoadedChar = new JButton();
  JButton btnBacktoMainClass = new JButton();
  JButton btnBacktoMenu = new JButton();
  JButton btnBacktoMenu2 = new JButton();

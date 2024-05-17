@@ -302,7 +302,7 @@ void MakeSoundClick(){
     vars.btnMainClass[2].setIcon(vars.demon);
     vars.btnMainClass[3].setIcon(vars.dwarf);
 
-    vars.btnBacktoMenu.setBounds(10,10,20,20);
+    vars.btnBacktoMenu.setBounds(10,10,30,30);
     vars.btnBacktoMenu.addActionListener(this);
     this.add(vars.btnBacktoMenu);
 
@@ -339,14 +339,20 @@ void MakeSoundClick(){
         vars.buttonMoveClasses += 200;
         
     }
-    vars.btnBacktoMenu2.setBounds(10,10,20,20);
+    vars.btnBacktoMenu2.setBounds(10,10,30,30);
     vars.btnBacktoMenu2.addActionListener(this);
 
-    vars.btnDeleteSave.setBounds(10, 450, 20,20);
+    vars.btnDeleteSave.setBounds(30, 450, 80,40);
+    vars.btnDeleteSave.setBackground(Color.red);
     vars.btnDeleteSave.addActionListener(this);
+
+    vars.btnPlayLoadedChar.setBounds(820, 450, 80,40);
+    vars.btnPlayLoadedChar.setBackground(Color.GREEN);
+    vars.btnPlayLoadedChar.addActionListener(this);
 
     pnlLoadChar.add(vars.btnBacktoMenu2);
     pnlLoadChar.add(vars.btnDeleteSave);
+    pnlLoadChar.add(vars.btnPlayLoadedChar);
     
     try {
         CharacterLoad();
@@ -380,7 +386,7 @@ void MakeSoundClick(){
     pnlSubClasses.setLayout(null);
 
     vars.btnBacktoMainClass.addActionListener(this);
-    vars.btnBacktoMainClass.setBounds(10,10,20,20);
+    vars.btnBacktoMainClass.setBounds(10,10,30,30);
     pnlSubClasses.add(vars.btnBacktoMainClass);
 
     for (int i = 0; i<2; i++){
