@@ -13,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class MainMenu {
@@ -75,6 +76,11 @@ public class MainMenu {
             MakeSound();
              select.RunStart();
              select.SwitchMainPanels = true;
+
+             try {
+                select.CountSaves();
+            } catch (FileNotFoundException e1) {
+            }
              
             }
         });
@@ -99,6 +105,11 @@ public class MainMenu {
              select.RunStart();
              select.SwitchMainPanels = true;
              select.Load = true;
+
+             try {
+                select.CountSaves();
+            } catch (FileNotFoundException e1) {
+            }
             }
         });
 

@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.Scanner;
 
 import MainGame.Main.GameFrame;
+import MainGame.Main.WriteLocation;
 import characterselection.*;
 import Classes.*;
 public class MainSelection extends JPanel implements Runnable, ActionListener{
@@ -16,12 +17,14 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
     public boolean Load = false;
     public JPanel pnlSubClasses = new JPanel();
     public JPanel pnlLoadChar = new JPanel();
+    int checker;
 
     // Objects of Other Classess
     MainSelectionVars vars = new MainSelectionVars(); // gains access to the variables in the otherclass in the package
     characterselection.MainMenu menu = new MainMenu();// gains access to the main menu panel
     GameFrame game = new GameFrame(); // gains access to jersey code
     MainClass main = new MainClass(); // gains access to jersey code
+    WriteLocation write = new WriteLocation();
     
 
 
@@ -184,6 +187,26 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
                } 
          }
 
+         if(e.getSource() == vars.btnPlayLoadedChar){
+            MakeSoundClick();
+            int i = vars.loadPick;
+            if(vars.loadPick == 0){
+            } else if (vars.loadPick == 1){
+                vars.loadPick+=1;
+            }else if (vars.loadPick == 2){
+                vars.loadPick+=2;
+            }else if (vars.loadPick == 3){
+                vars.loadPick+=3;
+            }
+            main.mainFrame.dispose();
+            
+            try {
+                game.showGame(vars.loadArray[vars.loadPick], vars.loadArray[vars.loadPick+1], i, 2);
+            } catch (IOException e1) {
+            }
+            
+         }
+
          // button that returns you to the main menu panel from the mainclass panel
          if(e.getSource() == vars.btnBacktoMenu){
             MakeSoundClick();
@@ -204,6 +227,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             MakeSoundClick();
             try {
                 DeleteSaves(vars.loadPick);
+                write.DeleteLocation(vars.loadPick);
             } catch (IOException | LineUnavailableException e1) {
                 System.out.println("error");
             }
@@ -211,18 +235,23 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
          // button that starts the game 
          if(e.getSource() == vars.btnStartGame){
+
+            try {
+                CharacterCreate();
+            } catch (IOException | LineUnavailableException e1) {
+                e1.printStackTrace();
+            }
            main.mainFrame.dispose();
-           game.showGame(vars.MainClassPick, vars.SubClassPick); // Passing MainClassPick and SubClassPick to jersey's Code
+
            try {
-            CharacterCreate();
-        } catch (IOException | LineUnavailableException e1) {
-            e1.printStackTrace();
-        }
+            game.showGame(vars.MainClassPick, vars.SubClassPick, vars.numberOfSaves);
+        } catch (IOException e1) {
+        } // Passing MainClassPick and SubClassPick to jersey's Code
+         
          }
 
          // button that returns you to the mainclass panel from the subclass panel
          if (e.getSource() == vars.btnBacktoMainClass){
-
             MakeSoundClick();
             vars.SubClassPick = 0;
             vars.SwitchSubPanels = true;
@@ -233,7 +262,6 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
         
         // Switches subclasses 
             if(e.getSource() == vars.btnSwitchSub[j]){
-
                 vars.SubClassPick = j;
                 SetupClassStats();
                 SetupClassDesc();
@@ -474,23 +502,26 @@ void MakeSoundClick(){
             }      
             LoadIcons();  
         }
+
     }  
 
     public void CharacterCreate() throws IOException, LineUnavailableException{
 
+        vars.CharacterDelete.setLength(0);
+        vars.CharacterSaves.setLength(0);
         File saves = new File("character-selection/src/res/MainGameResources/LoadClass/Saves.txt");
         Scanner sc = new Scanner(saves);
 
         while(sc.hasNextLine()){
-            System.out.println("i am looping");
+           vars.numberOfSaves++;
         vars.CharacterSaves = vars.CharacterSaves.append(sc.nextLine()+"\n");
-        }
-        
+            }
+            CheckCharacterLimits(vars.numberOfSaves);
+
 
             BufferedWriter SaveCharacter = new BufferedWriter(new FileWriter("character-selection/src/res/MainGameResources/LoadClass/Saves.txt"));
             SaveCharacter.write(vars.CharacterSaves.toString()+vars.MainClassPick+" "+vars.SubClassPick);
             SaveCharacter.close();
-            System.out.println(vars.CharacterSaves.toString());
             vars.IconCount+= 1;
         }  
 
@@ -516,7 +547,9 @@ void MakeSoundClick(){
         vars.CharacterSaves = vars.CharacterSaves.append(sc.nextLine()+"\n");
         vars.deleteCounter++;
         }
-       
+        
+        vars.IconCount = vars.deleteCounter - 1;
+
         for(int i = deleteChar; i < vars.deleteCounter+2; i ++){
             vars.loadArray[i] =  vars.loadArray[i+2];
         }
@@ -540,14 +573,59 @@ void MakeSoundClick(){
                         vars.btnLoadChar[0].setIcon(null);
                     }
                     vars.IconCount-= 1;
-                   
+                    CountSaves();              
     }  
+
+    public void CountSaves() throws FileNotFoundException{
+        
+        vars.checkcounts = 0;
+
+        File saves = new File("character-selection/src/res/MainGameResources/LoadClass/Saves.txt");
+        Scanner sc = new Scanner(saves);
+        
+        while(sc.hasNextLine()){
+           vars.checkcounts++;
+        vars.CharacterSaves = vars.CharacterSaves.append(sc.nextLine()+"\n");
+            }
+            System.out.println(vars.checkcounts);
+            CheckCharacterLimits(vars.checkcounts);
+    }
 
     public void LoadIcons(){
         MiddleMan mid = new MiddleMan(vars.loadArray[vars.p], vars.loadArray[vars.p+1]);
         vars.btnLoadChar[vars.counter].setIcon(mid.getImg());
         vars.p+=2;
         vars.counter++;
+    }
+
+    public void CheckCharacterLimits(int a){
+
+        System.out.println(a);
+        for(int i = a; i < vars.btnLoadChar.length; i++){
+            vars.btnLoadChar[i].setVisible(false);
+        }
+
+        for(int j = 0; j<a; j++){
+            if(j < 4){
+            vars.btnLoadChar[j].setVisible(true);
+          }
+        }
+
+        if(a == 0){
+            vars.btnDeleteSave.setVisible(false);
+            vars.btnPlayLoadedChar.setVisible(false);
+        }
+        else{
+            vars.btnDeleteSave.setVisible(true);
+            vars.btnPlayLoadedChar.setVisible(true);
+        }
+
+        if(a == 4){
+            vars.btnStartGame.setVisible(false);
+        }
+        else{
+            vars.btnStartGame.setVisible(true);
+        }
     }
 }	
 

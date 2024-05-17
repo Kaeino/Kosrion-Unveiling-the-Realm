@@ -5,6 +5,7 @@ import MainGame.Entity.Player;
 import MainGame.Tile.TIleManager;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class GamePanel extends JPanel implements  Runnable{
     // SCREEN SETTINGS
@@ -27,7 +28,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
 
 
-
+    int LoadCreate;
     int FPS = 60;
 
 
@@ -36,7 +37,6 @@ public class GamePanel extends JPanel implements  Runnable{
     public GameUI ui = new GameUI(this);
     public Thread gameThread;
     public CollisionChecker cCHecker = new CollisionChecker(this);
-
     public Player player = new Player(this, keyH);
 
 
@@ -57,8 +57,8 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setFocusable(true);
         ui.initializePausePanel();
 
-        System.out.println(this.screenWidth);
-        System.out.println(this.screenHeight);
+        // System.out.println(this.screenWidth);
+        // System.out.println(this.screenHeight);
     }
 
     // FIND WHERE TO PUT THIS
@@ -101,13 +101,17 @@ public class GamePanel extends JPanel implements  Runnable{
             }
             if(timer >= 1000000000)
             {
-                //    System.out.println("drawCount = " + drawCount);
+                WriteLocation write = new WriteLocation();
+                write.CharacterLoc.setLength(0);
+                    try {
+                        write.SaveLocation(player.worldX, player.worldY, LoadCreate);
+                    } catch (IOException e) {
+                    }
                 drawCount = 0;
                 timer = 0;
             }
         }
     }
-
     public void update()
     {
         if(gameState == playState)
@@ -142,9 +146,19 @@ public class GamePanel extends JPanel implements  Runnable{
     {
         gameFrame.add(this);
     }
-    public void Character(int a , int b)// Method I added which gets called when GameFrame gets called.
-    {
+    public void Character(int a , int b, int c, int d)// Method I added which gets called when GameFrame gets called.
+    {   
+        player.setDefaultValues(c);
+        LoadCreate = c;
          player.setCharacterStats(a, b);// Calls a method in Player Class which also uses these values passed from MainSelection class
          // can be considered Method Chaining ung not in the same class idk what thats called i forgor
+    }
+
+    public void Character(int a , int b, int c)
+    {   
+       player.setDefaultValues(5);
+        LoadCreate = c;
+         player.setCharacterStats(a, b);
+        
     }
 }

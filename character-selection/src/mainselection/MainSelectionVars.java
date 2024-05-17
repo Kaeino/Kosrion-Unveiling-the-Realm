@@ -43,6 +43,7 @@ JLabel img = new JLabel(subClassImg);
  int loadPanelMove = -950;
  int MainClassPick;
  int SubClassPick;
+ int numberOfSaves;
 
     // CharacterStats
      int HP;
@@ -60,6 +61,7 @@ JLabel img = new JLabel(subClassImg);
      int j;
      int p;
      String saveCount;
+     int checkcounts;
      
      Integer[] loadArray = new Integer[8];
      ImageIcon loadIcon;

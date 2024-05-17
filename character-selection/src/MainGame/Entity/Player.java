@@ -2,6 +2,7 @@ package MainGame.Entity;
 
 import MainGame.Main.GamePanel;
 import MainGame.Main.KeyHandler;
+import MainGame.Main.WriteLocation;
 import Classes.MiddleMan;
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -11,7 +12,7 @@ public class Player extends Entity
 {
     GamePanel gp;
     KeyHandler keyH;
-
+    WriteLocation wr = new WriteLocation();
 
     public  final int screenX;
     public  final  int screenY;
@@ -32,7 +33,6 @@ public class Player extends Entity
         solidArea.width = 32;
         solidArea.height = 32;
 
-        setDefaultValues();
         getPlayerImage();
     }
 
@@ -59,13 +59,23 @@ public class Player extends Entity
 
 
     }
-    public void setDefaultValues() {
+    public void setDefaultValues(int a) {
+        System.out.println(a);
+        if(a == 5){
         worldX = gp.tileSize * 23;  // Used to set player starting position [can write 1000 or this]
         worldY = gp.tileSize * 21;  // Used to set player starting position [can write 1000 or this]
+        } else{
+            try {
+                wr.LoadLocation(a);
+            } catch (IOException e) {
+                System.out.println("I MAKE A PLAY FUCKING UP YOUR WHOLE LIFE");
+            }
+            System.out.println(wr.LoadX());
+            worldX = wr.LoadX() ;
+            worldY = wr.LoadY();
+        }
         speed = 4;
         direction = "down";
-
-
     }
 
     public void getPlayerImage() {
