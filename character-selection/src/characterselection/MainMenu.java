@@ -90,7 +90,7 @@ public class MainMenu {
         buttonPanel.add(createCharacterButton);
         
 
-        ImageIcon loadIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
+        ImageIcon loadIcon = new ImageIcon("character-selection/src/res/buttons/load.png");
         JButton loadButton = new JButton(loadIcon);
         loadButton.setFocusable(false);
         loadButton.setPreferredSize(new Dimension(130, 47));
@@ -116,7 +116,7 @@ public class MainMenu {
         buttonPanel.add(loadButton);
 
         // whole code for exit button lang
-        ImageIcon quitIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
+        ImageIcon quitIcon = new ImageIcon("character-selection/src/res/buttons/x.png");
         JButton quitButton = new JButton(quitIcon);
         quitButton.setFocusable(false);
         quitButton.setPreferredSize(new Dimension(130, 47));
