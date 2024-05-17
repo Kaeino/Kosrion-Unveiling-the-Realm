@@ -62,7 +62,7 @@ public class MainMenu {
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
         // code for create a new character button lang
-        ImageIcon createCharacterIcon = new ImageIcon("character-selection/src/res/game-background/quit-button_dummy.png");
+        ImageIcon createCharacterIcon = new ImageIcon("character-selection/src/res/buttons/new.png");
         JButton createCharacterButton = new JButton(createCharacterIcon);
         createCharacterButton.setFocusable(false);
         createCharacterButton.setPreferredSize(new Dimension(130, 47));
