@@ -18,6 +18,8 @@ public class GamePanel extends JPanel implements  Runnable{
     public   final int screenWidth = tileSize * maxScreenCol; // 768 pixels
     public  final int screenHeight = tileSize * maxScreenRow; // 576 pixels
 
+    public JFrame window = new JFrame();
+
     // WORLD SETTINGS
     public  int maxWorldCol;
     public  int maxWorldRow;
@@ -29,6 +31,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
 
     int LoadCreate;
+    boolean test;
     int FPS = 60;
 
 
@@ -112,6 +115,45 @@ public class GamePanel extends JPanel implements  Runnable{
             }
         }
     }
+
+    public void showGame(int a, int b, int c) throws IOException // added parameters to this which passes the MainClassPick and SubClassPick variables from Mainselection Class (Under mainselection Package)
+    {
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("2D Adventure");
+
+        Character(a, b , c); // Method calling in GamePanel Class which uses the passed Values of MainClassPick and SubClassPick variables from Mainselection Class
+        window.add(this);
+
+        window.pack();
+
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+
+        setUpGame();
+
+        startGameThread();
+    }
+
+    public void showGame(int a, int b, int c, int d) throws IOException
+    {
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setResizable(false);
+        window.setTitle("2D Adventure");
+
+        Character(a, b , c, d);
+        window.add(this);
+
+        window.pack();
+
+        window.setLocationRelativeTo(null);
+        window.setVisible(true);
+
+        setUpGame();
+
+        startGameThread();
+    }
+
     public void update()
     {
         if(gameState == playState)
@@ -141,10 +183,6 @@ public class GamePanel extends JPanel implements  Runnable{
         {
             g2.dispose();   
         }      
-    }
-    public  void showMainGame(JFrame gameFrame) 
-    {
-        gameFrame.add(this);
     }
     public void Character(int a , int b, int c, int d)// Method I added which gets called when GameFrame gets called.
     {   

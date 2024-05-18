@@ -174,8 +174,7 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
                     vars.MainClassPick = i;          
                     vars.SwitchSubPanels = true;      
                     vars.backPanel = false;
-                    SetupClassStats();
-                    SetupClassDesc();           
+                    SetupClassStats();         
                } 
          }
 
@@ -201,8 +200,10 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             main.mainFrame.dispose();
             
             try {
+                CountSaves();
+                CharacterLoad();
                 game.showGame(vars.loadArray[vars.loadPick], vars.loadArray[vars.loadPick+1], i, 2);
-            } catch (IOException e1) {
+            } catch (IOException | LineUnavailableException e1) {
             }
             
          }
@@ -238,13 +239,16 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
 
             try {
                 CharacterCreate();
+                CharacterLoad();
             } catch (IOException | LineUnavailableException e1) {
                 e1.printStackTrace();
             }
            main.mainFrame.dispose();
+           
 
            try {
             game.showGame(vars.MainClassPick, vars.SubClassPick, vars.numberOfSaves);
+            CountSaves();
         } catch (IOException e1) {
         } // Passing MainClassPick and SubClassPick to jersey's Code
          
@@ -264,7 +268,6 @@ public class MainSelection extends JPanel implements Runnable, ActionListener{
             if(e.getSource() == vars.btnSwitchSub[j]){
                 vars.SubClassPick = j;
                 SetupClassStats();
-                SetupClassDesc();
 
             }  
       }
@@ -464,20 +467,6 @@ void MakeSoundClick(){
 }
 
 ///////////////////////////////////////////////////////////////////
-// Sets the location of the text of stats and descriptions
-   void SetupClassDesc(){ 
-
-    // sets text for the subclass panel to display the stats and images for each subclass
-    // vars.stats.setFont(new Font("Calibri",Font.BOLD, 30));
-    // vars.lore.setFont(new Font("Calibri",Font.BOLD, 30));
-    // vars.stats.setText("<html>Class Stats"+"<br>HP: "+vars.HP +"<br>MP: "+vars.MP+"</html>");
-    // vars.lore.setText("<html>Class Lore:"+"<br>"+vars.Lore+"</html>");
-
-    //  vars.pnlSmalls[1].add(vars.stats);
-    //  vars.pnlSmalls[2].add(vars.lore);
-
-   }
-///////////////////////////////////////////////////////////////////
 // Sets the stats to show in the subclass panel
   public void SetupClassStats(){
     MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick); // gaisn access to the stats methods from Classes Package
@@ -504,6 +493,7 @@ void MakeSoundClick(){
 
     BufferedReader loadCharacter = new BufferedReader(new FileReader("character-selection/src/res/MainGameResources/LoadClass/Saves.txt"));
 
+    vars.counter = 0;
     vars.j = 0;
     vars.p = 0;
     while((vars.saveCount = loadCharacter.readLine()) != null){
@@ -520,8 +510,10 @@ void MakeSoundClick(){
 
     }  
 
+    
     public void CharacterCreate() throws IOException, LineUnavailableException{
 
+       vars.numberOfSaves = 0;
         vars.CharacterDelete.setLength(0);
         vars.CharacterSaves.setLength(0);
         File saves = new File("character-selection/src/res/MainGameResources/LoadClass/Saves.txt");
@@ -611,6 +603,7 @@ void MakeSoundClick(){
         vars.btnLoadChar[vars.counter].setIcon(mid.getImg3());
         vars.p+=2;
         vars.counter++;
+        System.out.println(vars.counter + "WAAAAAAAAAAAAAAY");
     }
 
     public void CheckCharacterLimits(int a){

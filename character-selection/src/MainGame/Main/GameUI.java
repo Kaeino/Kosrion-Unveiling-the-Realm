@@ -68,7 +68,9 @@ public class GameUI extends GameFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Handle main menu button action 
-                //ayaw nito tho for some reason, ayaw nya i exit
+                gp.window.dispose();
+                main.mainFrame.show();
+                gp.gameThread.stop();
             }
         });
 

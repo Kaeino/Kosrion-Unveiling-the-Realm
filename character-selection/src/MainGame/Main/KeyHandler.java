@@ -26,6 +26,7 @@ public class KeyHandler implements KeyListener
         CharacterStats(code);
 
         BasicAttack(code);
+        BasicAttack(code);
         SaySomething(code);
     }
 
@@ -48,6 +49,10 @@ public class KeyHandler implements KeyListener
         if(code == KeyEvent.VK_D)
         {
             rightPressed = false;
+        }
+        if(code == KeyEvent.VK_Q)
+        {
+           gp.test = false;
         }
     }
 
@@ -123,6 +128,7 @@ public class KeyHandler implements KeyListener
             }
         }
     }
+
 
 
     // METHOD OVERLOADING SANA BUT WE CAN JUST SPLIT MGA MESSAGES WITH \n
