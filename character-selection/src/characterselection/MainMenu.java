@@ -20,6 +20,8 @@ public class MainMenu {
 
     public static JPanel mainMenuPanel;
     public static MainSelection select = new MainSelection();
+    static ImageIcon titleIcon = new ImageIcon("character-selection/src/res/buttons/Title.png");
+    static JLabel title = new JLabel(titleIcon);
 
     // Damnn eto yung method para mapakita yung main menu namay background image, which is yung lone hero, maintframe + imagepath = main menu with image damnn
     public static void show(JFrame mainFrame, String backgroundImagePath) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -59,7 +61,10 @@ public class MainMenu {
         mainMenuBg.add(backgroundLabel, BorderLayout.CENTER);
 
         // Create a panel for buttons
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10));
+       // JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40,1));
+       JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40,1));
+        JPanel titlePanel = new JPanel(new FlowLayout());
+        titlePanel.add(title, BorderLayout.NORTH);
 
         // code for create a new character button lang
         ImageIcon createCharacterIcon = new ImageIcon("character-selection/src/res/buttons/new.png");
@@ -84,12 +89,7 @@ public class MainMenu {
              
             }
         });
-
-
-        // Add the create character button to the button panel
-        buttonPanel.add(createCharacterButton);
         
-
         ImageIcon loadIcon = new ImageIcon("character-selection/src/res/buttons/load.png");
         JButton loadButton = new JButton(loadIcon);
         loadButton.setFocusable(false);
@@ -132,15 +132,23 @@ public class MainMenu {
             }
         });
         
+      
+         // Add the load character button to the button panel
+        buttonPanel.add(loadButton);
+        
+         // Add the quit button to the button panel
+         buttonPanel.add(quitButton);
 
-        // Add the quit button to the button panel
-        buttonPanel.add(quitButton);
+           // Add the create character button to the button panel
+        buttonPanel.add(createCharacterButton);
 
         buttonPanel.setBackground(new Color(0,0,0,0));
+        titlePanel.setBackground(new Color(0,0,0,0));
 
         // Add the button panel to the main menu panel
 
-        mainMenuPanel.add(buttonPanel, BorderLayout.SOUTH);
+        mainMenuPanel.add(titlePanel, BorderLayout.NORTH);
+        mainMenuPanel.add(buttonPanel, BorderLayout.CENTER);
        
 
         // Eto mini shits

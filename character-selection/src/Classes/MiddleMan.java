@@ -20,6 +20,7 @@ public class MiddleMan extends FinalPick {
     private ImageIcon subClassImg;
     private ImageIcon subClassImg2;
     private ImageIcon subClassImg3;
+    private ImageIcon subClassImg4;
     private String Name;
 
    public MiddleMan(int mainclass, int subclass){
@@ -35,6 +36,7 @@ public class MiddleMan extends FinalPick {
                     subClassImg = new ImageIcon("character-selection/src/res/sprites/Hero.gif");
                     subClassImg2 = new ImageIcon("character-selection/src/res/sprites/Hero2.gif");
                     subClassImg3 = new ImageIcon("character-selection/src/res/sprites/HeroBorder.gif");
+                    subClassImg4 = new ImageIcon("character-selection/src/res/buttons/HeroStats.png");
                     HP = 1500;
                     MP = 800;
                     Strength = 1800;
@@ -53,6 +55,7 @@ public class MiddleMan extends FinalPick {
                     subClassImg = new ImageIcon("character-selection/src/res/sprites/Rogue.gif");
                     subClassImg2 = new ImageIcon("character-selection/src/res/sprites/Rogue2.gif");
                     subClassImg3 = new ImageIcon("character-selection/src/res/sprites/RougeBorder.gif");
+                    subClassImg4 = new ImageIcon("character-selection/src/res/buttons/RougeStats.png");
                     HP = 1300;
                     MP = 800;
                     Strength = 1200;
@@ -75,6 +78,7 @@ public class MiddleMan extends FinalPick {
                     subClassImg = new ImageIcon("character-selection/src/res/sprites/HighElf.gif");
                     subClassImg2 = new ImageIcon("character-selection/src/res/sprites/HighElf2.gif");
                     subClassImg3 = new ImageIcon("character-selection/src/res/sprites/HighElfBorder.gif");
+                    subClassImg4 = new ImageIcon("character-selection/src/res/buttons/HighElfStats.png");
                     HP = 1000;
                     MP = 1500;
                     Strength = 500;
@@ -93,6 +97,7 @@ public class MiddleMan extends FinalPick {
                     subClassImg = new ImageIcon("character-selection/src/res/sprites/DarkElf.gif");
                     subClassImg2 = new ImageIcon("character-selection/src/res/sprites/DarkElf2.gif");
                     subClassImg3 = new ImageIcon("character-selection/src/res/sprites/DarkElfBorder.gif");
+                    subClassImg4 = new ImageIcon("character-selection/src/res/buttons/DarkElfStats.png");
                     HP = 1200;
                     MP = 1300;
                     Strength = 800;
@@ -115,6 +120,7 @@ public class MiddleMan extends FinalPick {
                     subClassImg = new ImageIcon("character-selection/src/res/sprites/Youkai.gif");
                     subClassImg2 = new ImageIcon("character-selection/src/res/sprites/Youkai2.gif");
                     subClassImg3 = new ImageIcon("character-selection/src/res/sprites/YoukaiBorder.gif");
+                    subClassImg4 = new ImageIcon("character-selection/src/res/buttons/YoukaiStats.png");
                     HP = 2000;
                     MP = 1100;
                     Strength = 500;
@@ -133,6 +139,7 @@ public class MiddleMan extends FinalPick {
                     subClassImg = new ImageIcon("character-selection/src/res/sprites/ArchDemon.gif");
                     subClassImg2 = new ImageIcon("character-selection/src/res/sprites/ArchDemon2.gif");
                     subClassImg3 = new ImageIcon("character-selection/src/res/sprites/ArchBorder.gif");
+                    subClassImg4 = new ImageIcon("character-selection/src/res/buttons/ArchStats.png");
                     HP = 2500;
                     MP = 1000;
                     Strength = 2000;
@@ -156,6 +163,7 @@ public class MiddleMan extends FinalPick {
                     subClassImg = new ImageIcon("character-selection/src/res/sprites/Warrior.gif");
                     subClassImg2 = new ImageIcon("character-selection/src/res/sprites/Warrior2.gif");
                     subClassImg3 = new ImageIcon("character-selection/src/res/sprites/WarriorBorder.gif");
+                    subClassImg4 = new ImageIcon("character-selection/src/res/buttons/WarriorStats.png");
                     HP = 4000;
                     MP = 0  ;
                     Strength = 4000;
@@ -174,6 +182,7 @@ public class MiddleMan extends FinalPick {
                     subClassImg = new ImageIcon("character-selection/src/res/sprites/Weaponsmith.gif");
                     subClassImg2 = new ImageIcon("character-selection/src/res/sprites/Weaponsmith2.gif");
                     subClassImg3 = new ImageIcon("character-selection/src/res/sprites/SmithBorder.gif");
+                    subClassImg4 = new ImageIcon("character-selection/src/res/buttons/SmithStats.png");
                     HP = 3000;
                     MP = 1000;
                     Strength = 1800;
@@ -195,7 +204,7 @@ public class MiddleMan extends FinalPick {
         // Separated by data type
         super.setCharacterStatsInt(HP, MP, Strength, Intelligence, MagicControl, Speed, Luck, Agility, Charisma, Stamina);
         super.setCharacterStatsStr(Lore, Name);
-        super.setCharacterStatsImg(subClassImg, subClassImg2, subClassImg3);
+        super.setCharacterStatsImg(subClassImg, subClassImg2, subClassImg3, subClassImg4);
 
     }
 

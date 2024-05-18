@@ -24,14 +24,13 @@ ImageIcon elf = new ImageIcon("character-selection/src/res/sprites/Elf.gif");
 ImageIcon demon = new ImageIcon("character-selection/src/res/sprites/Demon.gif");
 ImageIcon dwarf = new ImageIcon("character-selection/src/res/sprites/Dwarf.gif");
 
-ImageIcon subBorderVertMain = new ImageIcon("character-selection/src/res/buttons/StatBorder.png");
+ImageIcon subBorderVertMain;
+JLabel borderStats = new JLabel(subBorderVertMain);
+
 ImageIcon subBorderHorzMain = new ImageIcon("character-selection/src/res/buttons/LoreBorder.png");
 
 ImageIcon subClassImg;
 JLabel img = new JLabel(subClassImg);
-
-ImageIcon subBorderVert;
-ImageIcon subBorderHorz;
 
 ImageIcon returnButton = new ImageIcon("character-selection/src/res/buttons/back-button.png");
 ImageIcon switchSubsButtonL = new ImageIcon("character-selection/src/res/buttons/preview-left.png");
@@ -40,7 +39,6 @@ ImageIcon playButton = new ImageIcon("character-selection/src/res/buttons/play-b
 ImageIcon ContinueButton = new ImageIcon("character-selection/src/res/buttons/continue.png");
 ImageIcon DeleteButton = new ImageIcon("character-selection/src/res/buttons/delete.png");
 
-JLabel borderStats = new JLabel(subBorderVertMain);
 JLabel borderLore = new JLabel(subBorderHorzMain);
 
  Thread thread;
