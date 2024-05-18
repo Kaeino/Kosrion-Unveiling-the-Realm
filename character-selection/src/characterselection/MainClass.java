@@ -28,7 +28,7 @@ public class MainClass {
 
 
         // 1st - this show the splash screen muna
- //       SplashScreen.show();
+        SplashScreen.show();
 
         //damnnnn, closing shit
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,8 +52,8 @@ public class MainClass {
         MainMenu.show(mainFrame, "character-selection/src/res/game-background/background-2.gif");
 
         // Hi, I'm music play command, first commands makes the music loop, 2nd command makes the music play, DAMN Discord Bot Command neh XD, Damn Groovy Memories
-      //  clip.loop(Clip.LOOP_CONTINUOUSLY);
-       // clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
+        clip.start();
 
 
         // Call this class on button click to show the game [MAKE SURE CLOSE THE MAIN FRAME DIN]
