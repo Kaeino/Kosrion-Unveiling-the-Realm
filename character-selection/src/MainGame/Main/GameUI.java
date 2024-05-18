@@ -13,7 +13,7 @@ public class GameUI extends GameFrame{
     Graphics2D g2;
     Font arial_40;
     JPanel pauseMenu;
-    JButton continueButton;
+    JButton exitGameButton;
     JButton mainMenuButton;
     MainClass main = new MainClass();
 
@@ -39,9 +39,9 @@ public class GameUI extends GameFrame{
         pauseMenu.setBounds(panelX, panelY, panelWidth, panelHeight);
 
         // Add buttons to the pause menu panel
-        continueButton = new JButton("Continue");
-        mainMenuButton = new JButton("Main Menu");
-        continueButton.setFocusable(false);
+        exitGameButton = new JButton("Continue");
+        mainMenuButton = new JButton("Exit Game");
+        exitGameButton.setFocusable(false);
         mainMenuButton.setFocusable(false);
 
 
@@ -51,12 +51,12 @@ public class GameUI extends GameFrame{
         int buttonX = (panelWidth - buttonWidth) / 2; // Center horizontally
         int buttonY = (panelHeight - buttonHeight * 2) / 2; // Center vertically with space between buttons
 
-        continueButton.setBounds(buttonX, buttonY, buttonWidth, buttonHeight);
+        exitGameButton.setBounds(buttonX, buttonY, buttonWidth, buttonHeight);
         mainMenuButton.setBounds(buttonX, buttonY + buttonHeight * 2, buttonWidth, buttonHeight);
 
 
         // Add action listeners to the buttons
-        continueButton.addActionListener(new ActionListener() {
+        exitGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Handle continue button action
@@ -69,12 +69,11 @@ public class GameUI extends GameFrame{
             public void actionPerformed(ActionEvent e) {
                 // Handle main menu button action 
                 gp.window.dispose();
-                main.mainFrame.show();
-                gp.gameThread.stop();
+                System.exit(0);
             }
         });
 
-        pauseMenu.add(continueButton);
+        pauseMenu.add(exitGameButton);
         pauseMenu.add(mainMenuButton);
 
         // Add background panel and pause menu panel to the game panel

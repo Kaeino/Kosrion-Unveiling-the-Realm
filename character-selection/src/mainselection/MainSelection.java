@@ -474,6 +474,7 @@ void MakeSoundClick(){
     // sets the values of the character stats to be displayed in the subclasspanel;
     vars.subClassImg = mid.getImg3();
     vars.subBorderVertMain = mid.getImg4();
+    vars.subBorderHorzMain = mid.getImg5();
     vars.HP = mid.getHP();
     vars.MP = mid.getMP();
     vars.Lore = mid.getLore();
@@ -486,6 +487,7 @@ void MakeSoundClick(){
     vars.Charisma = mid.getCharisma();
     vars.img.setIcon(vars.subClassImg);
     vars.borderStats.setIcon(vars.subBorderVertMain);
+    vars.borderLore.setIcon(vars.subBorderHorzMain);
 
    }
 

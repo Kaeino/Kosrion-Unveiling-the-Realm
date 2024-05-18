@@ -21,6 +21,7 @@ interface StatMethods{
     public ImageIcon getImg2();
     public ImageIcon getImg3();
     public ImageIcon getImg4();
+    public ImageIcon getImg5();
 
 }
 
@@ -42,6 +43,7 @@ public abstract class FinalPick implements StatMethods{
     private ImageIcon subClassImg2;
     private ImageIcon subClassImg3;
     private ImageIcon subClassImg4;
+    private ImageIcon subClassImg5;
     private String Name;
     
     public void setCharacterStatsInt(int hp, int mp, int strength, int intelligence, int magicControl, int speed, int luck, int agility, int charisma, int stamina){
@@ -64,12 +66,13 @@ public abstract class FinalPick implements StatMethods{
         this.Name = name;
     }
 
-    public void setCharacterStatsImg(ImageIcon subclassimg, ImageIcon subclassimg2, ImageIcon subclassimg3, ImageIcon subclassimg4){
+    public void setCharacterStatsImg(ImageIcon subclassimg, ImageIcon subclassimg2, ImageIcon subclassimg3, ImageIcon subclassimg4, ImageIcon subclassimg5){
         //ImageIcon Setters
         this.subClassImg = subclassimg;
         this.subClassImg2 = subclassimg2;
         this.subClassImg3 = subclassimg3;
         this.subClassImg4 = subclassimg4;
+        this.subClassImg5 = subclassimg5;
     }
 
     //Interface Implemented Methods
@@ -132,6 +135,10 @@ public abstract class FinalPick implements StatMethods{
     @Override
     public ImageIcon getImg4(){
         return subClassImg4;
+    }
+    @Override
+    public ImageIcon getImg5(){
+        return subClassImg5;
     }
     @Override
     public String getName(){
