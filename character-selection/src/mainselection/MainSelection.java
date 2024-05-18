@@ -321,6 +321,7 @@ void MakeSoundClick(){
         vars.btnMainClass[i].setSize(120,170);
         vars.btnMainClass[i].setLocation(vars.buttonMoveClasses,175);
         vars.btnMainClass[i].setFocusable(false);
+        vars.btnMainClass[i].setBackground(new Color(128,128,128));
         
         this.add(vars.btnMainClass[i]);
         vars.buttonMoveClasses += 200;
@@ -331,6 +332,7 @@ void MakeSoundClick(){
     vars.btnMainClass[3].setIcon(vars.dwarf);
 
     vars.btnBacktoMenu.setBounds(10,10,30,30);
+    vars.btnBacktoMenu.setIcon(vars.returnButton);
     vars.btnBacktoMenu.addActionListener(this);
     this.add(vars.btnBacktoMenu);
 
@@ -368,14 +370,17 @@ void MakeSoundClick(){
         
     }
     vars.btnBacktoMenu2.setBounds(10,10,30,30);
+    vars.btnBacktoMenu2.setIcon(vars.returnButton);
     vars.btnBacktoMenu2.addActionListener(this);
 
-    vars.btnDeleteSave.setBounds(30, 450, 80,40);
+    vars.btnDeleteSave.setBounds(30, 400, 160,80);
     vars.btnDeleteSave.setBackground(Color.red);
+    vars.btnDeleteSave.setIcon(vars.DeleteButton);
     vars.btnDeleteSave.addActionListener(this);
 
-    vars.btnPlayLoadedChar.setBounds(820, 450, 80,40);
+    vars.btnPlayLoadedChar.setBounds(750, 400, 160,80);
     vars.btnPlayLoadedChar.setBackground(Color.GREEN);
+    vars.btnPlayLoadedChar.setIcon(vars.ContinueButton);
     vars.btnPlayLoadedChar.addActionListener(this);
 
     pnlLoadChar.add(vars.btnBacktoMenu2);
@@ -415,6 +420,7 @@ void MakeSoundClick(){
 
     vars.btnBacktoMainClass.addActionListener(this);
     vars.btnBacktoMainClass.setBounds(10,10,30,30);
+    vars.btnBacktoMainClass.setIcon(vars.returnButton);
     pnlSubClasses.add(vars.btnBacktoMainClass);
 
     for (int i = 0; i<2; i++){
@@ -429,14 +435,17 @@ void MakeSoundClick(){
 
        vars.btnSwitchSub[i] = new JButton();
        vars.btnSwitchSub[i].addActionListener(this);
-       vars.btnSwitchSub[i].setSize(50,50);
+       vars.btnSwitchSub[i].setSize(40,40);
        pnlSubClasses.add(vars.btnSwitchSub[i]);
        
     }
+    vars.btnSwitchSub[0].setIcon(vars.switchSubsButtonL);
+    vars.btnSwitchSub[1].setIcon(vars.switchSubsButtonR);
     vars.btnSwitchSub[0].setLocation(200,250);
     vars.btnSwitchSub[1].setLocation(685,250);
 
     vars.btnStartGame.setBounds(875,450, 40,40);
+    vars.btnStartGame.setIcon(vars.playButton);
     vars.btnStartGame.addActionListener(this);
     pnlSubClasses.add(vars.btnStartGame);
 
@@ -444,10 +453,13 @@ void MakeSoundClick(){
     vars.pnlSmalls[2].setBackground(new Color(128,128,128,255));
     vars.pnlSmalls[2].setSize(320,150);
     vars.pnlSmalls[2].setLocation(307,320);    
-    vars.pnlSmalls[2].setLayout(new FlowLayout());
+    vars.pnlSmalls[2].setLayout(new BorderLayout());
 
-    vars.pnlSmalls[1].setLayout(new FlowLayout());
+    vars.pnlSmalls[1].setLayout(new BorderLayout());
     vars.pnlSmalls[0].add(vars.img, BorderLayout.CENTER);
+
+    vars.pnlSmalls[1].add(vars.borderStats, BorderLayout.CENTER);
+    vars.pnlSmalls[2].add(vars.borderLore, BorderLayout.CENTER);
     pnlSubClasses.add(vars.pnlSmalls[2]);
 }
 
@@ -456,13 +468,13 @@ void MakeSoundClick(){
    void SetupClassDesc(){ 
 
     // sets text for the subclass panel to display the stats and images for each subclass
-    vars.stats.setFont(new Font("Calibri",Font.BOLD, 30));
-    vars.lore.setFont(new Font("Calibri",Font.BOLD, 30));
-    vars.stats.setText("<html>Class Stats"+"<br>HP: "+vars.HP +"<br>MP: "+vars.MP+"</html>");
-    vars.lore.setText("<html>Class Lore:"+"<br>"+vars.Lore+"</html>");
+    // vars.stats.setFont(new Font("Calibri",Font.BOLD, 30));
+    // vars.lore.setFont(new Font("Calibri",Font.BOLD, 30));
+    // vars.stats.setText("<html>Class Stats"+"<br>HP: "+vars.HP +"<br>MP: "+vars.MP+"</html>");
+    // vars.lore.setText("<html>Class Lore:"+"<br>"+vars.Lore+"</html>");
 
-    vars.pnlSmalls[1].add(vars.stats);
-    vars.pnlSmalls[2].add(vars.lore);
+    //  vars.pnlSmalls[1].add(vars.stats);
+    //  vars.pnlSmalls[2].add(vars.lore);
 
    }
 ///////////////////////////////////////////////////////////////////
@@ -471,7 +483,7 @@ void MakeSoundClick(){
     MiddleMan mid = new MiddleMan(vars.MainClassPick,vars.SubClassPick); // gaisn access to the stats methods from Classes Package
     
     // sets the values of the character stats to be displayed in the subclasspanel;
-    vars.subClassImg = mid.getImg();
+    vars.subClassImg = mid.getImg3();
     vars.HP = mid.getHP();
     vars.MP = mid.getMP();
     vars.Lore = mid.getLore();
@@ -483,6 +495,7 @@ void MakeSoundClick(){
     vars.Stamina = mid.getStamina();
     vars.Charisma = mid.getCharisma();
     vars.img.setIcon(vars.subClassImg);
+
    }
 
    public void CharacterLoad() throws IOException, LineUnavailableException{
@@ -593,7 +606,7 @@ void MakeSoundClick(){
 
     public void LoadIcons(){
         MiddleMan mid = new MiddleMan(vars.loadArray[vars.p], vars.loadArray[vars.p+1]);
-        vars.btnLoadChar[vars.counter].setIcon(mid.getImg());
+        vars.btnLoadChar[vars.counter].setIcon(mid.getImg3());
         vars.p+=2;
         vars.counter++;
     }
