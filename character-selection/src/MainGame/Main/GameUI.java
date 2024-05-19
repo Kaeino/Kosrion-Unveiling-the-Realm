@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GameUI extends GameFrame{
+public class GameUI{
     GamePanel gp;
     Graphics2D g2;
     Font arial_40;
