@@ -49,6 +49,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public  final int pauseState = 1;
     public  final  int characterState = 2;
     public  final int dialougeState = 3;
+    public  final int tutorialState = 4;
 
     // JPanel for holding Swing components
     public  GamePanel()
@@ -67,9 +68,16 @@ public class GamePanel extends JPanel implements  Runnable{
     // FIND WHERE TO PUT THIS
     public  void setUpGame()
     {
-        gameState = playState;
-    }
+        gameState = tutorialState;
+       /* ui.drawDialouge("\nPress 'Enter' Key to Open/Close Panel \n"+
+                        "\n\n Press 'C' Key to Open/Close Character Stats \n " +
+                        "Press 'escape' Key to Open/Close Pause Game \n" +
+                        "Press 'E' Key to Open/Close Character Dialouge \n" +
+                        "Press 'WASD' Key To Move Character"
 
+                , 20, 50, screenWidth -(tileSize * 2), tileSize * 11,
+                tileSize , tileSize / 2);*/
+    }
     public  void startGameThread()
     {
         gameThread = new Thread(this);
@@ -159,10 +167,6 @@ public class GamePanel extends JPanel implements  Runnable{
         if(gameState == playState)
         {
             player.update();
-        }
-        if(gameState == pauseState)
-        {
-            // Do nothing
         }
     }
 

@@ -28,6 +28,7 @@ public class KeyHandler implements KeyListener
         BasicAttack(code);
         BasicAttack(code);
         SaySomething(code);
+        TutorialState(code);
     }
 
     @Override
@@ -53,6 +54,23 @@ public class KeyHandler implements KeyListener
         if(code == KeyEvent.VK_Q)
         {
            gp.test = false;
+        }
+    }
+
+    private  void TutorialState(int code)
+    {
+        if(code == KeyEvent.VK_ENTER)
+        {
+            if(gp.gameState == gp.playState)
+            {
+                gp.gameState = gp.tutorialState;
+                System.out.println("SHOWED CONTROLS");
+            }
+            else if(gp.gameState == gp.tutorialState)
+            {
+                gp.gameState = gp.playState;
+                System.out.println("GAME CONTINUED");
+            }
         }
     }
 

@@ -87,24 +87,38 @@ public class GameUI{
         g2.setFont(arial_40);
         g2.setColor(Color.WHITE);
 
+        if(gp.gameState == gp.tutorialState)
+        {
+            pauseMenu.setVisible(false);
+
+            drawDialouge("\nPress 'Enter' Key to Open/Close Panel \n"+
+                            "\n\n Press 'C' Key to Open/Close Character Stats \n " +
+                            "Press 'escape' Key to Open/Close Pause Game \n" +
+                            "Press 'E' Key to Open/Close Character Dialouge \n" +
+                            "Press 'WASD' Key To Move Character"
+
+                    , 20, 50, gp.screenWidth -(gp.tileSize * 2), gp.tileSize * 11,
+                    gp.tileSize , gp.tileSize / 2);
+        }
+
         if(gp.gameState == gp.playState)
         {
             pauseMenu.setVisible(false);
         }
-        if(gp.gameState == gp.pauseState)
+         if(gp.gameState == gp.pauseState)
         {
             pauseMenu.setVisible(true);
 
             // eto nagpapakita ng "pause" text pag naka pause
             drawPauseScreen();
         }
-        if(gp.gameState == gp.characterState)
+         if(gp.gameState == gp.characterState)
         {
             // eto nagpapakita ng character stats
             drawCharacterScreen();
             drawLoreScreen();
         }
-        if(gp.gameState == gp.dialougeState)
+         if(gp.gameState == gp.dialougeState)
         {
             // PWEDENG LAGYAN NG ARRAYS PARA IBA IBA MESSAGE
             drawDialouge("“This is the magic item that suppresses my mighty magical \n powers.  " +
@@ -112,6 +126,7 @@ public class GameUI{
                     "Well, that was a lie.\n I just wear it for looks.”", 18, 30);
         }
     }
+
     public  void drawLoreScreen()
     {
         // CREATE A FRAME
@@ -292,6 +307,23 @@ public class GameUI{
                g2.drawString(line, frameX, frameY);
                frameY += lineHeightDistance;
            }
+    }
+    public  void drawDialouge(String message, float fontSize, int lineHeightDistance,
+                              int frameWidth, int frameHeight, int frameX, int frameY)
+    {
+        drawSubWindow(frameX, frameY, frameWidth, frameHeight);
+
+        // TEXTS
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(fontSize));
+
+        frameX += gp.tileSize;
+        frameY += gp.tileSize;
+        for(String line : message.split("\n"))
+        {
+            g2.drawString(line, frameX, frameY);
+            frameY += lineHeightDistance;
+        }
     }
 
     public int getXforCenteredText(String text) {
